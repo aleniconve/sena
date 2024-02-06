@@ -3,7 +3,7 @@ class VideosController < ApplicationController
   def show
     @video = Video.find[:id]
   end
-  
+
   def index
     if params[:search]
       @keyword = params[:search].strip
@@ -20,3 +20,4 @@ class VideosController < ApplicationController
       end
     end
   end
+end
