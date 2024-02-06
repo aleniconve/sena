@@ -3,12 +3,12 @@ class VideosController < ApplicationController
   def show
     @video = Video.find[:id]
   end
-  
+
   def index
     if params[:search]
       @keyword = params[:search].strip
       if @keyword.blank?
-        @videos = Video.all
+        @videos = ""
       else
         @search = Video.where("lower(name) like ?", "%#{@keyword.downcase}%")
                               .or(Video.where("lower(category) like ?", "%#{@keyword.downcase}%"))
@@ -20,3 +20,4 @@ class VideosController < ApplicationController
       end
     end
   end
+end
