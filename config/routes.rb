@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   root to: "pages#home"
+
   get "/dashboard", to: "pages#dashboard", as: :dashboard
   resources :videos
   resources :folders do
