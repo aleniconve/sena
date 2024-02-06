@@ -1,0 +1,17 @@
+<h1>Videos</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <% @videos.each do |video| %>
+        <div class="card" style="width: 18rem;">
+          <video src="" controls></video>
+          <div class="card-body">
+            <h6 class="card-title">video.name</h6>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
