@@ -1,1 +1,8 @@
 // Specific CSS for your home-page
+
+.video {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 10px;
+  row-gap: 10px;
+}
