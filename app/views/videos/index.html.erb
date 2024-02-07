@@ -1,3 +1,5 @@
+<%= render "shared/navbar" %>
+
   <div class="d-flex flex-wrap">
   <% if @videos %>
     <div class="m-1">
@@ -18,7 +20,7 @@
     <% end %>
   <% else %>
     <div class="m-1">
-      <p><i>No results.</i></p>
+      <p><i>No results</i></p>
       <a href="/videos?search=basics"><button type="button" class="btn btn-primary text-white btn-sm py-0">basics</button></a>
       <a href="/videos?search=hello"><button type="button" class="btn btn-primary text-white btn-sm py-0">hello</button></a>
       <a href="/videos?search=how are you"><button type="button" class="btn btn-primary text-white btn-sm py-0">how are you</button></a>
