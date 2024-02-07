@@ -2,6 +2,7 @@ class VideosController < ApplicationController
 
   def show
     @video = Video.find(params[:id])
+    @bookmark = Bookmark.new
   end
 
   def index
