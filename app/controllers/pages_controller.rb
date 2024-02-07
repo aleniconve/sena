@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
   def home
-    # index for users that have not signed up
+    @videos = Video.all
+    @bookmark = Bookmark.new
   end
 
   def dashboard

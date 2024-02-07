@@ -13,3 +13,10 @@ h2 {
   line-height: 1.5;
   color: white;
 }
+
+.video {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 10px;
+  row-gap: 10px;
+}

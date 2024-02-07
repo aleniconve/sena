@@ -1,10 +1,12 @@
 class VideosController < ApplicationController
 
   def show
-    @video = Video.find[:id]
+    @video = Video.find(params[:id])
+    @bookmark = Bookmark.new
   end
 
   def index
+    @bookmark = Bookmark.new
     if params[:search]
       @keyword = params[:search].strip
       if @keyword.blank?
