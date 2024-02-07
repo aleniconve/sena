@@ -4,10 +4,33 @@
 
 <div class="container">
   <div class="video">
-        <% @videos.each do |video| %>
-            <%= link_to video_path(video) do %>
-              <%= cl_video_tag video.video.key, crop: "fill", class: "card-img-top" %>
-            <% end %>
-        <% end %>
+       <% @videos.each do |video| %>
+        <div class="">
+          <div data-bs-toggle="modal" data-bs-target="#video<%=video.id%>">
+            <%= cl_video_tag video.video.key, class: "card-img-top" %>
+          </div>
+          <div class="modal fade" id="video<%=video.id%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title"><%=video.name%></h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <%= cl_video_tag video.video.key, controls: true, class: "card-img-top" %>
+                </div>
+                <div class="modal-body">
+                  <%= render "bookmarks/form", video: video, bookmark: @bookmark %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <%# <div class="card-body border-top bg-light d-flex justify-content-end align-items-center">
+            <i class="fa-solid fa-play fa-2x"></i>
+            <i class="fa-solid fa-share-from-square fa-2x"></i>
+            <i class="fa-solid fa-heart fa-2x"></i>
+          </div> %>
+        </div>
+      <% end %>
   </div>
 </div>

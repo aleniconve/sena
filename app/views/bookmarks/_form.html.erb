@@ -1,4 +1,6 @@
-<%= simple_form_for [video, bookmark] do |f| %>
-  <%= f.association :folder, collection: Folder.all.order(:name), prompt: "Select a folder" %>
-  <%= f.submit "Add bookmark", class: "btn btn-flat" %>
+<% if current_user %>
+  <%= simple_form_for [video, bookmark] do |f| %>
+    <%= f.association :folder, collection: Folder.where(user: current_user).order(:name), prompt: "Select a folder" %>
+    <%= f.submit "Add bookmark", class: "btn btn-flat" %>
+  <% end %>
 <% end %>
