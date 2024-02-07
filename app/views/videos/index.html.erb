@@ -21,6 +21,9 @@
                 <div class="modal-body">
                   <%= cl_video_tag video.video.key, controls: true, class: "card-img-top" %>
                 </div>
+                <div class="modal-body">
+                  <%= render "bookmarks/form", video: video, bookmark: @bookmark %>
+                </div>
               </div>
             </div>
           </div>

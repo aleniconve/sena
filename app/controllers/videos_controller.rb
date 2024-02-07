@@ -6,6 +6,7 @@ class VideosController < ApplicationController
   end
 
   def index
+    @bookmark = Bookmark.new
     if params[:search]
       @keyword = params[:search].strip
       if @keyword.blank?
