@@ -1,4 +1,18 @@
 // Specific CSS for your home-page
+.container {
+  width: 100%;
+}
+
+h1 {
+  font-family: $signary-font;
+  color: white;
+}
+
+h2 {
+  font-size: x-large;
+  line-height: 1.5;
+  color: white;
+}
 
 .video {
   display: grid;
@@ -6,4 +20,3 @@
   column-gap: 10px;
   row-gap: 10px;
 }
-
