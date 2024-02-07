@@ -10,11 +10,9 @@
 
 require "open-uri"
 
-puts "Deleting existing data ..."
-Video.destroy_all
-Folder.destroy_all
-User.destroy_all
+puts "Deleting bookmarks and videos ..."
 Bookmark.destroy_all
+Video.destroy_all
 
 puts "Creating users ..."
 User.create(id: 1, email: "user@user.com", first_name: "Pedro", last_name: "Miranda", password: "password")
