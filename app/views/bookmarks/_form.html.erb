@@ -1,0 +1,4 @@
+<%= simple_form_for [video, bookmark] do |f| %>
+  <%= f.association :folder, collection: Folder.all.order(:name), prompt: "Select a folder" %>
+  <%= f.submit "Add bookmark", class: "btn btn-flat" %>
+<% end %>

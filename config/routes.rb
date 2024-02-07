@@ -12,8 +12,8 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   get "/dashboard", to: "pages#dashboard", as: :dashboard
-  resources :videos
-  resources :folders do
+  resources :folders
+  resources :videos do
     resources :bookmarks, only: [:create]
   end
   resources :bookmarks, only: [:destroy]
