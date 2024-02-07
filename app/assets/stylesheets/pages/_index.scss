@@ -1,2 +1,7 @@
 // Import page-specific CSS files here.
 @import "home";
+
+.video {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}

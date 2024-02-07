@@ -1,3 +1,13 @@
 <div class="container bg-primary" style="height: 100%; width: 100%">
   <i class="fa-solid fa-bookmark fa-lg"></i>signary
 </div>
+
+<div class="container">
+  <div class="video">
+        <% @videos.each do |video| %>
+            <%= link_to video_path(video) do %>
+              <%= cl_video_tag video.video.key, crop: "fill", class: "card-img-top" %>
+            <% end %>
+        <% end %>
+  </div>
+</div>

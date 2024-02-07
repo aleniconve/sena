@@ -1,3 +1,3 @@
 
     <title>Signary</title>
-    <video src="/app/assets/images/Videos/ole.mp4" width="500" controls></video>
+    <%= cl_video_tag @video.video.key, controls: true, class: "card-img-top"%>
