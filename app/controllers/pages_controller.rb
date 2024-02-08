@@ -4,7 +4,7 @@ class PagesController < ApplicationController
     @bookmark = Bookmark.new
   end
 
-  def dashboard
-    # write 2 index for users that have signed up
+  def profile
+    @folders = Folder.all
   end
 end
