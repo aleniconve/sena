@@ -6,5 +6,6 @@ class PagesController < ApplicationController
 
   def profile
     @folders = Folder.all
+    @folder = Folder.new
   end
 end
