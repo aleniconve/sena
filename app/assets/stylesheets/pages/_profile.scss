@@ -6,13 +6,13 @@
 h1 {
   font-family: $signary-font;
   font-size: xx-large;
-  color: white;
+  color: black;
 }
 
 h2 {
   font-size: x-large;
   line-height: 1.5;
-  color: white;
+  color: black;
   font-weight: 600;
 }
 
@@ -26,4 +26,24 @@ h5 {
   grid-template-columns: 1fr 1fr;
   column-gap: 12px;
   row-gap: 6px;
+}
+
+.folder-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  padding-top: 20px;
+}
+
+.folder {
+  background-color: lightgrey;
+  width: 150px;
+  height: 150px;
+  border-radius: 5px;
+  border-color: grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  text-decoration: none;
 }
