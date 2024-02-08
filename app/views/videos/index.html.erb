@@ -22,9 +22,9 @@
                 </div>
                 <div class="modal-body">
                   <%= cl_video_tag video.video.key, controls: true, class: "card-img-top" %>
-                </div>
-                <div class="modal-body">
                   <%= render "bookmarks/form", video: video, bookmark: @bookmark %>
+                  <p><%= cl_video_path video.video.key %></p>
+                  <button type="button" class="btn btn-outline-primary">Share Me</button>
                 </div>
               </div>
             </div>
