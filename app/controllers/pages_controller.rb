@@ -1,7 +1,6 @@
 class PagesController < ApplicationController
   def home
     if current_user
-      redirect_to profile_path
       @videos = Video.all
       @bookmark = Bookmark.new
     else
