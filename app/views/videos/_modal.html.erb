@@ -5,35 +5,41 @@
     <%= cl_video_tag video.video.key, class: "card-img-top rounded" %>
   </div>
 
-  <div class="modal" id="video<%= video.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal bg-primary" id="video<%= video.id %>" tabindex="-1">
     <div class="modal-dialog">
       <div class="modal-content">
 
         <div class="modal-header">
           <h5 class="modal-title"><%= video.name %></h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
 
-        <div class="modal-body">
-          <%= cl_video_tag video.video.key, controls: true, class: "card-img-top rounded" %>
-        </div>
-
-        <%= render "bookmarks/form", video: video, bookmark: @bookmark %>
-
-        <p><%= cl_video_path video.video.key %></p>
-        <button type="button" class="btn btn-outline-primary">Share Me</button>
-
-        <div class="video">
-          <% @more = Video.where(category: video.category) %>
-          <% if @more %>
-          <% @more.each do |another| %>
-          <div>
-            <div data-bs-toggle="modal" data-bs-target="self">
-              <%= cl_video_tag another.video.key, class: "card-img-top rounded" %>
-            </div>
+        <div class="modal-body px-0 pb-0 mb-0">
+          <div class="container">
+            <%= cl_video_tag video.video.key, controls: true, class: "card-img-top rounded" %>
+            <div style="height: 10px;"></div>
+            <%= render "bookmarks/form", video: video, bookmark: @bookmark %>
+            <%= render "videos/share", video: video %>
           </div>
-          <% end %>
-          <% end %>
+        </div>
+
+        <div style="height: 36px;"></div>
+
+        <div class="container" style="padding-bottom: 24px;">
+          <h5>Related signs</h5>
+          <div style="height: 12px;"></div>
+          <div class="video">
+            <% @more = Video.where(category: video.category).limit(2) %>
+            <% if @more %>
+              <% @more.each do |another| %>
+              <div>
+                <div data-bs-toggle="modal" data-bs-target="#video<%= another.id %>">
+                  <%= cl_video_tag another.video.key, class: "card-img-top rounded" %>
+                </div>
+              </div>
+              <% end %>
+            <% end %>
+          </div>
         </div>
 
       </div>
