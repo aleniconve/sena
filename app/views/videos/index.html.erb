@@ -1,6 +1,6 @@
 <%= render "shared/navbar" %>
 
-  <div class="d-flex flex-wrap">
+  <div class="container d-flex flex-wrap bg-white" style="padding-top: 84px;">
   <% if @videos %>
     <div class="m-1">
       <h4><strong><%= @keyword.upcase %></strong></h4>
@@ -11,7 +11,7 @@
       <% @videos.each do |video| %>
         <div class="">
           <div data-bs-toggle="modal" data-bs-target="#video<%=video.id%>">
-            <%= cl_video_tag video.video.key, class: "card-img-top" %>
+            <%= cl_video_tag video.video.key, class: "card-img-top rounded" %>
           </div>
           <div class="modal fade" id="video<%=video.id%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -29,11 +29,6 @@
               </div>
             </div>
           </div>
-          <%# <div class="card-body border-top bg-light d-flex justify-content-end align-items-center">
-            <i class="fa-solid fa-play fa-2x"></i>
-            <i class="fa-solid fa-share-from-square fa-2x"></i>
-            <i class="fa-solid fa-heart fa-2x"></i>
-          </div> %>
         </div>
       <% end %>
     </div>
