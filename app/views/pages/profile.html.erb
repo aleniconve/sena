@@ -1,0 +1,70 @@
+  <div class="container">
+    <div class="d-flex justify-content-center">
+      <span style="color: white;">
+        <i class="fa-solid fa-bookmark fa-2x"></i>
+      </span>
+      <h1>&nbsp;&nbsp;signary</h1>
+    </div>
+
+    <div style="height: 24px;"></div>
+
+    <div class="">
+      <h2>Welcome<br>
+      to your Library<br>
+      </h2>
+    </div>
+
+    <div style="height: 24px;"></div>
+
+    <div>
+      <div class="mx-auto mb-1">
+      <form action="/videos">
+        <div class="input-group">
+          <input type="text" name="search" class="form-control bg-white border-0" placeholder="Search for a sign">
+          <button type="submit" class="btn bg-white"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+      </form>
+      </div>
+      <div>
+      <a href="/videos?search=basics"><button type="button" class="btn btn-primary text-white btn-sm py-0">basics</button></a>
+      <a href="/videos?search=hello"><button type="button" class="btn btn-primary text-white btn-sm py-0">hello</button></a>
+      <a href="/videos?search=how are you"><button type="button" class="btn btn-primary text-white btn-sm py-0">how are you</button></a>
+      </div>
+    </div>
+
+    <div style="height: 36px;"></div>
+
+    <div style="width: 100%;">
+      <h6 class="text-white"><strong>Your folders</strong></h6>
+    </div>
+  </div>
+
+
+
+<div class="container bg-primary" style="height: 100%; width: 100%">
+  <i class="fa-solid fa-bookmark fa-lg"></i>signary
+</div>
+
+<div class="folder-container">
+  <% @folders.each do |folder| %>
+    <div class="folder">
+    <%#= folder.name %>
+   <%= link_to folder.name, folder_path(folder), :style=>'text-decoration: none;' %>
+    </div>
+  <% end %>
+</div>
+
+
+<div class="container py-5">
+  <div class="row">
+    <div class="col-12 col-md-6 offset-lg-3">
+      <div class="bg-white rounded p-3 shadow">
+        <h1>Create a new folder</h1>
+        <%= simple_form_for @folder do |f| %>
+          <%= f.input :name %>
+          <%= f.submit "Add folder", class: "btn btn-secondary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,10 +1,20 @@
 class PagesController < ApplicationController
   def home
-    @videos = Video.all
-    @bookmark = Bookmark.new
+    if current_user
+      redirect_to profile_path
+      @videos = Video.all
+      @bookmark = Bookmark.new
+    else
+      @videos = Video.all
+    end
   end
 
-  def dashboard
-    # write 2 index for users that have signed up
+  def profile
+      if current_user
+        @folders = Folder.where(user_id: current_user.id)
+        @folder = Folder.new
+      else
+        redirect_to user_session_path
+      end
   end
 end
