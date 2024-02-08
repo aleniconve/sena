@@ -2,84 +2,22 @@
 
   <div class="container d-flex flex-wrap bg-white" style="padding-top: 84px;">
   <% if @videos %>
+
     <div class="m-1">
       <h4><strong><%= @keyword.upcase %></strong></h4>
       <p><i><%= @videos.count %> <% if @videos.count > 1 %>videos<% else %>video<% end %> found</i></p>
     </div>
 
-    <div class="video">
-      <% @videos.each do |video| %>
-        <div class="">
-          <div data-bs-toggle="modal" data-bs-target="#video<%=video.id%>">
-            <%= cl_video_tag video.video.key, class: "card-img-top rounded" %>
-          </div>
-          <div class="modal fade" id="video<%=video.id%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title"><%=video.name%></h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <%= cl_video_tag video.video.key, controls: true, class: "card-img-top rounded" %>
-                </div>
-                  <%= render "bookmarks/form", video: video, bookmark: @bookmark %>
-                  <p><%= cl_video_path video.video.key %></p>
-                  <button type="button" class="btn btn-outline-primary">Share Me</button>
-                </div>
+    <%= render "videos/modal" %>
 
-                <div class="video">
-                  <% @more = Video.where(category: video.category) %>
-                  <% if @more %>
-                  <% @more.each do |another| %>
-                  <div>
-                    <div data-bs-toggle="modal" data-bs-target="#video<%=video.id%>">
-                      <%= cl_video_tag another.video.key, class: "card-img-top rounded" %>
-                    </div>
-                    <div class="modal fade" id="video<%= video.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div class="modal-dialog">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title"><%= another.name %></h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                          <div class="modal-body">
-                            <%= cl_video_tag another.video.key, controls: true, class: "card-img-top rounded" %>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <% end %>
-                  <% end %>
-                </div>
-
-              </div>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    </div>
   <% else %>
+
     <div class="m-1">
       <p><i>No results</i></p>
       <a href="/videos?search=basics"><button type="button" class="btn btn-primary text-white btn-sm py-0">basics</button></a>
       <a href="/videos?search=hello"><button type="button" class="btn btn-primary text-white btn-sm py-0">hello</button></a>
       <a href="/videos?search=how are you"><button type="button" class="btn btn-primary text-white btn-sm py-0">how are you</button></a>
     </div>
+
   <% end %>
   </div>
-
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-    </div>
-  </div>
-</div>
