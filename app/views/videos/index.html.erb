@@ -28,6 +28,7 @@
                 </div>
 
                 <div class="video">
+                  <% @more = Video.where(category: video.category) %>
                   <% if @more %>
                   <% @more.each do |another| %>
                   <div>
