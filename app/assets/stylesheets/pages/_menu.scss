@@ -4,7 +4,6 @@
   // top: 1rem;
   // right: 1rem;
   padding-top: 24px;
-  color: white;
   cursor: pointer;
 }
 
@@ -24,16 +23,17 @@
   bottom: 0;
   z-index: 99;
   background: #202020;
+  color: white;
   font-weight: 600;
   list-style: none;
   // padding-top: 4rem;
 }
 
-li {
+.menu.li {
   margin-bottom: 12px;
 }
 
-a {
+.menu.a {
   color: white;
   text-decoration: none;
 }

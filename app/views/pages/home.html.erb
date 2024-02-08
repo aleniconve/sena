@@ -1,5 +1,7 @@
 <div class="container" style="background-image: url(/assets/home_background.jpg); background-position: center; background-size: cover;">
-  <%= render "shared/menu" %>
+  <div class="text-white">
+    <%= render "shared/menu" %>
+  </div>
 
   <div style="height: 24px;"></div>
 
@@ -7,7 +9,7 @@
     <span style="color: white;">
       <i class="fa-solid fa-bookmark fa-2x"></i>
     </span>
-    <h1>&nbsp;&nbsp;signary</h1>
+    <h1 id="logo">&nbsp;&nbsp;signary</h1>
   </div>
 
   <div style="height: 24px;"></div>
@@ -44,31 +46,7 @@
 
   <div style="height: 12px;"></div>
 
-  <div class="video">
-      <% @videos.each do |video| %>
-      <div>
-        <div data-bs-toggle="modal" data-bs-target="#video<%=video.id%>">
-          <%= cl_video_tag video.video.key, class: "card-img-top rounded" %>
-        </div>
-        <div class="modal fade" id="video<%=video.id%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title"><%=video.name%></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <%= cl_video_tag video.video.key, controls: true, class: "card-img-top" %>
-              </div>
-              <div class="modal-body">
-                <%= render "bookmarks/form", video: video, bookmark: @bookmark %>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    <% end %>
-  </div>
+  <%= render "videos/modal" %>
 </div>
 
 <nav class="px-3 py-2 bg-primary bottom">
