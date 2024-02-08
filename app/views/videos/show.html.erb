@@ -1,6 +1,6 @@
 
-    <title>Signary</title>
-    <video src="" width="500" controls></video>
+    <%# <title>Signary</title>
+    <video src="" width="500" controls></video> %>
 
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -25,4 +25,6 @@
     </div>
   </div>
 </div>
-    <%= cl_video_tag @video.video.key, controls: true, class: "card-img-top"%>
+
+<%= cl_video_tag @video.video.key, controls: true, class: "card-img-top"%>
+

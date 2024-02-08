@@ -21,11 +21,37 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                  <%= cl_video_tag video.video.key, controls: true, class: "card-img-top" %>
+                  <%= cl_video_tag video.video.key, controls: true, class: "card-img-top rounded" %>
                 </div>
                 <div class="modal-body">
                   <%= render "bookmarks/form", video: video, bookmark: @bookmark %>
                 </div>
+
+                <div class="video">
+                  <% if @more %>
+                  <% @more.each do |another| %>
+                  <div>
+                    <div data-bs-toggle="modal" data-bs-target="#video<%=video.id%>">
+                      <%= cl_video_tag another.video.key, class: "card-img-top rounded" %>
+                    </div>
+                    <div class="modal fade" id="video<%= video.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title"><%= another.name %></h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            <%= cl_video_tag another.video.key, controls: true, class: "card-img-top rounded" %>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <% end %>
+                  <% end %>
+                </div>
+
               </div>
             </div>
           </div>

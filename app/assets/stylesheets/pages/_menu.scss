@@ -1,0 +1,43 @@
+.hamburger {
+  position: fixed;
+  z-index: 100;
+  // top: 1rem;
+  // right: 1rem;
+  padding-top: 24px;
+  color: white;
+  cursor: pointer;
+}
+
+.closeIcon {
+  display: none;
+}
+
+.menu {
+  padding-top: 84px;
+  margin: 0;
+  position: fixed;
+  transform: translateY(-100%);
+  transition: display 0.2s;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99;
+  background: #202020;
+  font-weight: 600;
+  list-style: none;
+  // padding-top: 4rem;
+}
+
+li {
+  margin-bottom: 12px;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+.showMenu {
+  transform: translateY(0);
+}
