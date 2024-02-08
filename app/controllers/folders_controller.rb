@@ -1,10 +1,13 @@
 class FoldersController < ApplicationController
 
   def show
-    @bookmark = Bookmark.where... 
+    @folder = Folder.find(params[:id])
+    @videos = @folder.videos
+    # @bookmark = Bookmark.find(params[:id])
+    # @video = Video.find(params[:id])
     # display all bookmarks from this folder
   end
-  
+
   def create
     @folder = Folder.new(folder_params)
     @folder.user = current_user
@@ -21,5 +24,5 @@ class FoldersController < ApplicationController
   def folder_params
     params.require(:folder).permit(:name)
   end
-  
+
 end
