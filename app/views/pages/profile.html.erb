@@ -45,11 +45,13 @@
   <i class="fa-solid fa-bookmark fa-lg"></i>signary
 </div>
 
-<div class="card">
-<% @folders.each do |folder| %>
-<%= folder.name %>
-<% end %>
-
+<div class="folder-container">
+  <% @folders.each do |folder| %>
+    <div class="folder">
+    <%#= folder.name %>
+   <%= link_to folder.name, folder_path(folder), :style=>'text-decoration: none;' %>
+    </div>
+  <% end %>
 </div>
 
 
