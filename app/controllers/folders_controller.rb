@@ -3,6 +3,7 @@ class FoldersController < ApplicationController
   def show
     @folder = Folder.find(params[:id])
     @videos = @folder.videos
+    @bookmark = Bookmark.new
     # @bookmark = Bookmark.find(params[:id])
     # @video = Video.find(params[:id])
     # display all bookmarks from this folder

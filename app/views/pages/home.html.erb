@@ -1,6 +1,6 @@
 <div class="container" style="background-image: url(/assets/home_background.jpg); background-position: center; background-size: cover;">
-  <div class="text-white">
-    <%= render "shared/menu" %>
+  <div class="d-flex justify-content-end align-items-center p-3">
+    <%= render "shared/menu", color: "#FFFFFF" %>
   </div>
 
   <div style="height: 24px;"></div>
@@ -41,14 +41,10 @@
   <div style="height: 36px;"></div>
 </div>
 
-<div class="container" style="padding-top: 24px; padding-bottom: 24px;">
+<div class="container" style="padding-top: 24px;">
   <h5>Popular signs</h5>
 
   <div style="height: 12px;"></div>
 
   <%= render "videos/modal" %>
 </div>
-
-<nav class="px-3 py-2 bg-primary bottom">
-  <span style="color: white; font-size: x-small;">© 2024 Signary, Inc.</span>
-</nav>

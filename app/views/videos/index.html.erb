@@ -1,10 +1,10 @@
 <%= render "shared/navbar" %>
 
-  <div class="container d-flex flex-wrap bg-white" style="padding-top: 84px;">
+  <div class="container" style="padding-top: 90px;">
   <% if @videos %>
 
     <div class="m-1">
-      <h4><strong><%= @keyword.upcase %></strong></h4>
+      <h4><strong>"<%= @keyword.downcase %>"</strong></h4>
       <p><i><%= @videos.count %> <% if @videos.count > 1 %>videos<% else %>video<% end %> found</i></p>
     </div>
 
