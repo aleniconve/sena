@@ -16,6 +16,7 @@ require "open-uri"
 
 puts "Creating users ..."
 User.create(id: 1, email: "user@user.com", first_name: "Pedro", last_name: "Miranda", password: "password")
+User.create(id: 2, email: "paulyn@user.com", first_name: "Paulyn", last_name: "Ompico", password: "password")
 
 puts "Creating folders ..."
 Folder.create(name: "basics", user_id: 1)
