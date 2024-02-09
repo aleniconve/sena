@@ -17,7 +17,7 @@ h2 {
   font-weight: 600;
 }
 
-h5 {
+h5, h6 {
   color: $primary;
   font-weight: 600;
 }
@@ -27,4 +27,10 @@ h5 {
   grid-template-columns: 1fr 1fr;
   column-gap: 12px;
   row-gap: 6px;
+}
+
+.category {
+  color: $primary;
+  font-weight: 600;
+  border: solid 1px #DDDDDD;
 }

@@ -223,25 +223,25 @@ new.video.attach(io: file, filename: video, content_type: "video/mp4")
 new.save!
 
 video = "v1707429666/signary/sushi_m9ksb3.mp4"
-new = Video.new(name: "Sushi", category: "eating", user_id: 1, description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.")
+new = Video.new(name: "Sushi", category: "food", user_id: 1, description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.")
 file = URI.open("https://res.cloudinary.com/dbmagpuir/video/upload/#{video}")
 new.video.attach(io: file, filename: video, content_type: "video/mp4")
 new.save!
 
 video = "v1707429562/signary/what_do_you_want_for_dinner_m2fvd6.mp4"
-new = Video.new(name: "What do you want for dinner", category: "eating", user_id: 1, description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.")
+new = Video.new(name: "What do you want for dinner", category: "food", user_id: 1, description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.")
 file = URI.open("https://res.cloudinary.com/dbmagpuir/video/upload/#{video}")
 new.video.attach(io: file, filename: video, content_type: "video/mp4")
 new.save!
 
 video = "v1707429216/signary/i_am_hungry_hzophw.mp4"
-new = Video.new(name: "I am hungry", category: "eating", user_id: 1, description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.")
+new = Video.new(name: "I am hungry", category: "food", user_id: 1, description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.")
 file = URI.open("https://res.cloudinary.com/dbmagpuir/video/upload/#{video}")
 new.video.attach(io: file, filename: video, content_type: "video/mp4")
 new.save!
 
 video = "v1707429112/signary/vegetarian_pkncsy.mp4"
-new = Video.new(name: "Vegetarian", category: "eating", user_id: 1, description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.")
+new = Video.new(name: "Vegetarian", category: "food", user_id: 1, description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.")
 file = URI.open("https://res.cloudinary.com/dbmagpuir/video/upload/#{video}")
 new.video.attach(io: file, filename: video, content_type: "video/mp4")
 new.save!

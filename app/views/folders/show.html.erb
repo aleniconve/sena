@@ -2,7 +2,7 @@
 
 <div class="container" style="padding-top: 90px;">
   <div class="m-1">
-    <h4><strong>/ <%= @folder.name.capitalize %></strong></h4>
+    <h4><strong><%= @folder.name.capitalize %></strong></h4>
     <p><i><%= @folder.bookmarks.count %> <% if @folder.bookmarks.count == 1 %>video<% else %>videos<% end %></i></p>
   </div>
 

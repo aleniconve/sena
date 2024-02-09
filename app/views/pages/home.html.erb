@@ -1,9 +1,11 @@
 <div class="container" style="background-image: url(/assets/home_background.jpg); background-position: center; background-size: cover;">
   <div class="d-flex justify-content-end align-items-center p-3">
-    <%= render "shared/menu", color: "#FFFFFF" %>
+    <%= link_to profile_path do %>
+      <i class="fa-solid fa-user fa-xl text-white"></i>
+    <% end %>
   </div>
 
-  <div style="height: 24px;"></div>
+  <div style="height: 12px;"></div>
 
   <div class="d-flex justify-content-center align-items-center">
     <span style="color: white;">
@@ -27,21 +29,26 @@
     <form action="/videos">
       <div class="input-group">
         <input type="text" name="search" class="form-control bg-white border-0" placeholder="Search for a sign">
-        <button type="submit" class="btn bg-white"><i class="fa-solid fa-magnifying-glass"></i></button>
+        <button type="submit" class="btn bg-white"><i class="fa-solid fa-magnifying-glass fa-lg"></i></button>
       </div>
     </form>
     </div>
-    <div>
-      <a href="/videos?search=basics"><button type="button" class="btn btn-white text-white btn-sm py-0 opacity-50">basics</button></a>
-      <a href="/videos?search=hello"><button type="button" class="btn btn-white text-white btn-sm py-0 opacity-50">hello</button></a>
-      <a href="/videos?search=how are you"><button type="button" class="btn btn-white text-white btn-sm py-0 opacity-50">how are you</button></a>
+    <div class="p-1 text-white">
+      Examples:&nbsp;&nbsp;<a href="/videos?search=hello" class="text-white opacity-75 px-1">Hello</a>
+      <a href="/videos?search=how are you" class="text-white opacity-75 px-1">How are you</a>
     </div>
   </div>
 
   <div style="height: 36px;"></div>
 </div>
 
-<div class="container" style="padding-top: 24px;">
+<div class="container d-flex justify-content-around" style="padding-top: 24px;">
+  <a href="/videos?search=basics" class="px-1"><button type="button" class="btn btn-light category">Basics</button></a>
+  <a href="/videos?search=greetings" class="px-1"><button type="button" class="btn btn-light category">Greetings</button></a>
+  <a href="/videos?search=phrases" class="px-1"><button type="button" class="btn btn-light category">Phrases</button></a>
+</div>
+
+<div class="container" style="padding-top: 36px;">
   <h5>Popular signs</h5>
 
   <div style="height: 12px;"></div>
