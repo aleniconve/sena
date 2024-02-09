@@ -5,5 +5,10 @@
     <h4><strong>/ <%= @folder.name.capitalize %></strong></h4>
     <p><i><%= @folder.bookmarks.count %> <% if @folder.bookmarks.count == 1 %>video<% else %>videos<% end %></i></p>
   </div>
-  <%= render "videos/modal" %>
+  <div class="sigle-video">
+    <%@folder.bookmarks.each do |bookmark|%>
+    <%= cl_video_tag bookmark.video.video.key, class: "card-img-top rounded", controls: true %>
+    <%= link_to "🗑", bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+    <% end %>
+  </div>
 </div>
