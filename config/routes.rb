@@ -12,9 +12,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   get "/profile", to: "pages#profile", as: :profile
-  resources :folders do
-    resources :bookmarks, only: [:destroy]
-  end
+  resources :folders
   resources :videos do
     resources :bookmarks, only: [:create]
   end

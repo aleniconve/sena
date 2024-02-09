@@ -6,10 +6,9 @@
     <p><i><%= @folder.bookmarks.count %> <% if @folder.bookmarks.count == 1 %>video<% else %>videos<% end %></i></p>
   </div>
   <div class="sigle-video">
-    <%@videos.each do |video|%>
-    <%= cl_video_tag video.video.key, class: "card-img-top rounded", controls: true %>
-    <%= link_to "🗑", folder_bookmark_path(@bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+    <%@folder.bookmarks.each do |bookmark|%>
+    <%= cl_video_tag bookmark.video.video.key, class: "card-img-top rounded", controls: true %>
+    <%= link_to "🗑", bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
     <% end %>
-    <%= @bookmark.video %>
   </div>
 </div>
