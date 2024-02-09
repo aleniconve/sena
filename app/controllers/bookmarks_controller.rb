@@ -8,4 +8,11 @@ class BookmarksController < ApplicationController
       redirect_to folder_path(@folder)
     end
   end
+
+  def destroy
+    @video = Video.find(params[:video_id])
+    @bookmark = Bookmark.find(params[:id])
+    @bookmark.destroy
+    # redirect_to folders_path(@bookmark.folder)
+  end
 end
