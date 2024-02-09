@@ -2,23 +2,10 @@
 
 <div class="container" style="padding-top: 90px;">
   <div class="m-1">
-    <h4><strong>My Library</strong></h4>
+    <h4><strong><%= @current_user.first_name %>'s Library</strong></h4>
     <p><i><%= @folders.count %> folders</i></p>
   </div>
 
-  <div style="height: 12px;"></div>
-
-  <%= simple_form_for @folder do |f| %>
-  <div class="input-group">
-    <div class="input-group-prepend">
-      <label class="input-group-text">Create</label>
-    </div>
-    <%= f.text_field :name, class: "form-control", placeholder: "New folder" %>
-    <div class="input-group-append">
-      <button class="btn btn-primary" type="submit"><i class="fa-solid fa-folder-plus"></i></button>
-    </div>
-  </div>
-  <% end %>
 
   <div style="height: 36px;"></div>
 
@@ -30,8 +17,24 @@
           <strong><%= folder.name.capitalize %></strong> (<%= folder.bookmarks.count %>)
           <%= link_to "🗑", folder_path(folder), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
         </div>
-      </div>
       <% end %>
     <% end %>
-  </div>
+
+
+
 </div>
+
+ <div style="height: 12px;"></div>
+
+    <%= simple_form_for @folder do |f| %>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <label class="input-group-text">Create</label>
+        </div>
+          <%= f.text_field :name, class: "form-control", placeholder: "New folder" %>
+          <div class="input-group-append">
+            <button class="btn btn-primary" type="submit"><i class="fa-solid fa-folder-plus"></i></button>
+          </div>
+      </div>
+    <% end %>
+  </div>
