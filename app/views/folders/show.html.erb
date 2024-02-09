@@ -1,27 +1,28 @@
  <%= render "shared/navbar" %>
 
 <div class="container d-flex flex-wrap bg-white" style="padding-top: 84px;">
-  <div>
-    <%= @folder.name%>
-  </div>
-  <div class="video">
-    <% @videos.each do |video| %>
-        <div data-bs-toggle="modal" data-bs-target="#video<%=video.id%>">
-          <%= cl_video_tag video.video.key, class: "card-img-top rounded" %>
-        </div>
-        <div class="modal fade" id="video<%=video.id%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title"><%=video.name%></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <%= cl_video_tag video.video.key, controls: true, class: "card-img-top rounded" %>
+
+      <p><%= link_to "⬅", profile_path, :style=>'text-decoration: none;' %></p><br>
+      <%= @folder.name %>
+
+    <div class="video">
+      <% @videos.each do |video| %>
+          <div data-bs-toggle="modal" data-bs-target="#video<%=video.id%>">
+            <%= cl_video_tag video.video.key, class: "card-img-top rounded" %>
+          </div>
+          <div class="modal fade" id="video<%=video.id%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title"><%=video.name%></h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <%= cl_video_tag video.video.key, controls: true, class: "card-img-top rounded" %>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-    <% end %>
-  </div>
+      <% end %>
+    </div>
 </div>
