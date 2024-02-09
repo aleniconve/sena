@@ -1,11 +1,9 @@
  <%= render "shared/navbar" %>
-
 <div class="container" style="padding-top: 90px;">
   <div class="m-1">
+    <p><%= link_to "⬅", profile_path, :style=>'text-decoration: none;' %></p><br>
     <h4><strong>/ <%= @folder.name.capitalize %></strong></h4>
     <p><i><%= @folder.bookmarks.count %> <% if @folder.bookmarks.count == 1 %>video<% else %>videos<% end %></i></p>
   </div>
-
   <%= render "videos/modal" %>
-
 </div>
