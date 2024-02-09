@@ -28,6 +28,7 @@
       <div class="card d-flex justify-content-between align-items-center bg-light">
         <div class="card-body">
           <strong><%= folder.name.capitalize %></strong> (<%= folder.bookmarks.count %>)
+          <%= link_to "🗑", folder_path(folder), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
         </div>
       </div>
       <% end %>
