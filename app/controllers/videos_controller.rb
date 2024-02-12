@@ -4,6 +4,8 @@ class VideosController < ApplicationController
     @video = Video.new(video_params)
     @video.user = current_user
     if @video.save
+      folder = Folder.find(@video.category)
+      Bookmark.create(folder: folder, video: @video)
       redirect_to profile_path, notice: "#{@video.name} was successfully uploaded!"
     else
       redirect_to profile_path, alert: "Video upload failed!"
@@ -35,6 +37,6 @@ class VideosController < ApplicationController
 
   private
   def video_params
-    params.require(:video).permit(:name, :description, :video)
+    params.require(:video).permit(:name, :description, :video, :category)
   end
 end
