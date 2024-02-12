@@ -1,6 +1,6 @@
 // Specific CSS for your home-page
 .container {
-  padding-top: 0;
+  padding: 18px 24px;
   margin-top: 0;
 }
 
@@ -35,15 +35,16 @@ h5, h6 {
   border: solid 1px #DDDDDD;
 }
 
-.horizont {
-  margin: 5px;
-  width: 350px;
-  height: 100px;
-  border: 2px solid #341C09;
-  white-space: nowrap;
-}
+// .horizont {
+//   // margin: 5px;
+//   // width: 350px;
+//   // height: 120px;
+//   // border: 2px solid #341C09;
+//   // white-space: nowrap;
+// }
+
 .item {
-  width: 120px;
+  height: 120px;
 }
 
 .flex {
@@ -51,6 +52,7 @@ h5, h6 {
   flex-wrap: nowrap;
   overflow: auto;
 }
+
 .flex-item {
   flex: 0 0 auto;
 }
