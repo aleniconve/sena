@@ -6,13 +6,13 @@
 
 #logo {
   font-family: $signary-font;
-  font-size: xx-large;
+  font-size: x-large;
   color: white;
 }
 
 h2 {
   font-size: x-large;
-  line-height: 1.5;
+  line-height: 1.75;
   color: white;
   font-weight: 600;
 }
@@ -33,4 +33,24 @@ h5, h6 {
   color: $primary;
   font-weight: 600;
   border: solid 1px #DDDDDD;
+}
+
+.horizont {
+  margin: 5px;
+  width: 350px;
+  height: 100px;
+  border: 2px solid #341C09;
+  white-space: nowrap;
+}
+.item {
+  width: 120px;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: auto;
+}
+.flex-item {
+  flex: 0 0 auto;
 }

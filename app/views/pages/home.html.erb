@@ -1,37 +1,45 @@
-<div class="container" style="background-image: url(/assets/home_background.jpg); background-position: center; background-size: cover;">
-  <div class="d-flex justify-content-end align-items-center p-3">
-    <%= link_to profile_path do %>
-      <i class="fa-solid fa-user fa-xl text-white"></i>
-    <% end %>
+<div class="container" style="height: 568px; background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(/assets/home_background.jpg); background-position: center; background-size: 600px;">
+  <div class="d-flex justify-content-between align-items-center p-3">
+    <div class="d-flex justify-content-center align-items-center">
+      <div style="color: white;">
+        <i class="fa-solid fa-bookmark fa-xl"></i>
+      </div>
+      <div id="logo">&nbsp;&nbsp;signary</div>
+    </div>
+    <div>
+      <%= link_to profile_path do %>
+        <i class="fa-solid fa-heart fa-xl" style="color: white;"></i>
+      <% end %>
+    </div>
   </div>
 
   <div style="height: 12px;"></div>
 
-  <div class="d-flex justify-content-center align-items-center">
+  <%# <div class="d-flex justify-content-center align-items-center">
     <span style="color: white;">
-      <i class="fa-solid fa-bookmark fa-2x"></i>
+      <i class="fa-solid fa-bookmark fa-3x"></i>
     </span>
     <h1 id="logo">&nbsp;&nbsp;signary</h1>
-  </div>
+  </div> %>
 
-  <div style="height: 24px;"></div>
+  <div style="height: 90px;"></div>
 
-  <div>
+  <div class="px-3">
     <h2>Bridging Worlds<br>
     through<br>
     Sign Language.</h2>
   </div>
 
-  <div style="height: 24px;"></div>
+  <div style="height: 60px;"></div>
 
-  <div>
+  <div class="px-3">
     <div class="mx-auto mb-1">
-    <form action="/videos">
-      <div class="input-group">
-        <input type="text" name="search" class="form-control bg-white border-0" placeholder="Search for a sign">
-        <button type="submit" class="btn bg-white"><i class="fa-solid fa-magnifying-glass fa-lg"></i></button>
-      </div>
-    </form>
+      <form action="/videos">
+        <div class="input-group">
+          <input type="text" name="search" class="form-control bg-white border-0" placeholder="Search for a sign">
+          <button type="submit" class="btn bg-white"><i class="fa-solid fa-magnifying-glass fa-lg"></i></button>
+        </div>
+      </form>
     </div>
     <div class="p-1 text-white">
       Examples:&nbsp;&nbsp;<a href="/videos?search=hello" class="text-white opacity-75 px-1">Hello</a>
@@ -39,7 +47,9 @@
     </div>
   </div>
 
-  <div style="height: 36px;"></div>
+  <div style="height: 90px; color: white;" class="d-flex justify-content-center align-items-end">
+    <i class="fa-solid fa-hand-point-down fa-lg fa-bounce" style=" --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1; --fa-bounce-rebound: 0; --fa-animation-iteration-count: 3;"></i>
+  </div>
 </div>
 
 <div class="container d-flex justify-content-around" style="padding-top: 24px;">
@@ -50,8 +60,5 @@
 
 <div class="container" style="padding-top: 36px;">
   <h5>Popular signs</h5>
-
-  <div style="height: 12px;"></div>
-
   <%= render "videos/modal" %>
 </div>
