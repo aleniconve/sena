@@ -33,4 +33,20 @@
     </div>
   </div>
   <% end %>
-</div>
+
+
+  <div style="height: 36px;"></div>
+
+    <%= simple_form_for @video do |f| %>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <label class="input-group-text">Upload</label>
+        </div>
+        <%= f.input :name, class: "form-control", placeholder: 'Title' %>
+        <%= f.input :video, as: :file, class: "form-control" %>
+        <%= f.input :category, collection: Folder.where(user: current_user), prompt: "Select a folder", label: false, class: "form-control" %>
+        <div class="input-group-append">
+          <%= f.submit 'Upload', class: "form-control", id: 'fileUpload', data: { disable_with: 'Uploading' } %>
+        </div>
+      </div>
+    <% end %>

@@ -4,7 +4,7 @@
     <div class="input-group-prepend">
       <span class="input-group-text">Add to:</span>
     </div>
-    <%= f.association :folder, collection: Folder.where(user: current_user).order(:name), prompt: "Select a folder", label: false %>
+    <%= f.select :folder, collection: Folder.where(user: current_user).order(:name), prompt: "Select a folder", label: false %>
     <div class="input-group-append">
       <button class="btn btn-primary rounded-right" type="submit"><i class="fa-solid fa-bookmark"></i></button>
     </div>

@@ -12,6 +12,7 @@ class PagesController < ApplicationController
       if current_user
         @folders = Folder.where(user_id: current_user.id)
         @folder = Folder.new
+        @video = Video.new
       else
         redirect_to user_session_path
       end
