@@ -1,10 +1,10 @@
 class PagesController < ApplicationController
   def home
     if current_user
-      @videos = Video.limit(8)
+      @videos = Video.all.sample(8)
       @bookmark = Bookmark.new
     else
-      @videos = Video.limit(8)
+      @videos = Video.all.sample(8)
     end
   end
 

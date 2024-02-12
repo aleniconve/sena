@@ -1,9 +1,9 @@
 <div style="height: 12px;"></div>
 
-<div class="horizont flex">
+<div class="video">
   <% @videos.each do |video| %>
 
-  <div class="item flex-item" data-bs-toggle="modal" data-bs-target="#video<%= video.id %>">
+  <div data-bs-toggle="modal" data-bs-target="#video<%= video.id %>">
     <% @user_folders = Folder.where(user: current_user) %>
     <% @user_folders.each do |user_folder| %>
       <% @booked = Bookmark.where(video: video).and(Bookmark.where(folder: user_folder)) %>
