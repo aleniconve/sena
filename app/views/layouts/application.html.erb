@@ -6,6 +6,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <%= javascript_import_module_tag "menu" %>
@@ -13,5 +14,6 @@
 
   <body style="padding-bottom: 24px;">
     <%= yield %>
+    <%= render "shared/flashes" %>
   </body>
 </html>

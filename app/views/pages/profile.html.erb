@@ -33,4 +33,22 @@
     </div>
   </div>
   <% end %>
-</div>
+
+
+  <div style="height: 36px;"></div>
+
+    <%= form_for @video do |f| %>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <label class="input-group-text">Upload</label>
+        </div>
+        <%= f.text_field :name, class: "form-control", placeholder: 'Title' %>
+        <%#= f.text_area :description, class: "form-control", placeholder: 'Description', rows: '1' %>
+        <%= f.file_field :video, class: "form-control" %>
+        <%#= f.text_field :category, class: "form-control" %>
+        <%= f.select :category, collection: Folder.where(user: current_user).order(:name), prompt: "Select a folder", label: false %>
+        <div class="input-group-append">
+          <%= f.submit 'Upload', class: "form-control", id: 'fileUpload', data: { disable_with: 'Uploading' } %>
+        </div>
+      </div>
+    <% end %>
