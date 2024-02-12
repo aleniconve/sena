@@ -1,5 +1,5 @@
-<div class="container" style="height: 568px; background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(/assets/home_background.jpg); background-position: center; background-size: 600px;">
-  <div class="d-flex justify-content-between align-items-center p-3">
+<div class="container" style="height: 568px; background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(https://res.cloudinary.com/dq1ieegre/image/upload/v1707731772/home_background_oydzxl.jpg    ); background-position: center; background-size: 600px;">
+  <div class="d-flex justify-content-between align-items-center">
     <div class="d-flex justify-content-center align-items-center">
       <div style="color: white;">
         <i class="fa-solid fa-bookmark fa-xl"></i>
@@ -8,7 +8,7 @@
     </div>
     <div>
       <%= link_to profile_path do %>
-        <i class="fa-solid fa-heart fa-xl" style="color: white;"></i>
+        <i class="fa-solid fa-user fa-xl" style="color: white;"></i>
       <% end %>
     </div>
   </div>
@@ -24,7 +24,7 @@
 
   <div style="height: 90px;"></div>
 
-  <div class="px-3">
+  <div>
     <h2>Bridging Worlds<br>
     through<br>
     Sign Language.</h2>
@@ -32,7 +32,7 @@
 
   <div style="height: 60px;"></div>
 
-  <div class="px-3">
+  <div>
     <div class="mx-auto mb-1">
       <form action="/videos">
         <div class="input-group">
@@ -52,14 +52,39 @@
   </div>
 </div>
 
-<div class="container d-flex justify-content-around" style="padding-top: 24px;">
+<div class="container">
+  <div style="height: 12px;"></div>
 
-  <a href="/videos?search=basics" class="px-1"><button type="button" class="btn btn-light category">Basics</button></a>
-  <a href="/videos?search=greetings" class="px-1"><button type="button" class="btn btn-light category">Greetings</button></a>
-  <a href="/videos?search=phrases" class="px-1"><button type="button" class="btn btn-light category">Phrases</button></a>
-</div>
+  <div class="d-flex">
+    <a href="/videos?search=basics"><button type="button" class="btn btn-light category">Basics</button></a>
+    <div style="width: 12px;"></div>
+    <a href="/videos?search=food"><button type="button" class="btn btn-light category">Food</button></a>
+    <div style="width: 12px;"></div>
+    <a href="/videos?search=greetings"><button type="button" class="btn btn-light category">Greetings</button></a>
+  </div>
 
-<div class="container" style="padding-top: 36px;">
-  <h5>Popular signs</h5>
-  <%= render "videos/modal" %>
+  <div style="height: 36px;"></div>
+
+  <div>
+    <h5>Popular signs</h5>
+    <div style="height: 12px;"></div>
+
+    <div class="flex">
+      <% @videos.each do |video| %>
+      <div style="margin-right: 12px;">
+        <div>
+          <%= cl_video_tag video.video.key, class: "rounded item flex-item", controls: true %>
+        </div>
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="d-flex justify-content-start align-items-center">
+            <p style="font-weight: 600;"><%= video.name %></p>
+          </div>
+          <div class="d-flex justify-content-end align-items-center">
+            <%# <i class="fa-solid fa-heart fa-lg"></i> %>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
 </div>
