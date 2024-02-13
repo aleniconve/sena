@@ -23,7 +23,7 @@ class FoldersController < ApplicationController
   def destroy
     @folder = Folder.find(params[:id])
     @folder.destroy
-    redirect_to folder_path 
+    redirect_to folder_path
   end
 
 
