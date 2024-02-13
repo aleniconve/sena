@@ -6,7 +6,7 @@ class PagesController < ApplicationController
     else
       @videos = Video.all.sample(8)
     end
-    @most_searched_videos = Video.order(search_count: :desc).limit(10)
+    @most_searched_videos = Video.where("search_count > 0").order(search_count: :desc).limit(10)
     @most_searched_videos ||= []
   end
 
