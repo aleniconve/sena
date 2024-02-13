@@ -1,12 +1,12 @@
 class PagesController < ApplicationController
   def home
+    @bookmark = Bookmark.new
     if current_user
       @videos = Video.all.sample(8)
-      @bookmark = Bookmark.new
     else
       @videos = Video.all.sample(8)
     end
-    @most_searched_videos = Video.order(search_count: :desc).limit(10)
+    @most_searched_videos = Video.where("search_count > 0").order(search_count: :desc).limit(10)
     @most_searched_videos ||= []
   end
 

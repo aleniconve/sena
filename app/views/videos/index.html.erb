@@ -1,28 +1,36 @@
 <%= render "shared/navbar" %>
 
+<div style="height: 12px;"></div>
+
+<div class="container" style="padding-top: 90px;">
+<% if @videos %>
+
+  <div>
+    <h4><strong>"<%= @keyword.downcase %>"</strong></h4>
+    <p><i><%= @videos.count %> <% if @videos.count > 1 %>videos<% else %>video<% end %> found</i></p>
+  </div>
+
   <div style="height: 12px;"></div>
 
-  <div class="container" style="padding-top: 90px;">
-  <% if @videos %>
-
-    <div class="m-1">
-      <h4><strong>"<%= @keyword.downcase %>"</strong></h4>
-      <p><i><%= @videos.count %> <% if @videos.count > 1 %>videos<% else %>video<% end %> found</i></p>
-    </div>
-
-    <%= render "videos/modal" %>
-
-  <% else %>
-
-    <div class="m-1">
-      <p><i>No results</i></p>
-    </div>
-
-    <div class="container d-flex justify-content-around" style="padding-top: 12px;">
-      <a href="/videos?search=basics" class="px-1"><button type="button" class="btn btn-light category">Basics</button></a>
-      <a href="/videos?search=greetings" class="px-1"><button type="button" class="btn btn-light category">Greetings</button></a>
-      <a href="/videos?search=phrases" class="px-1"><button type="button" class="btn btn-light category">Phrases</button></a>
-    </div>
-
+  <div class="video">
+  <% @videos.each do |video| %>
+    <%= link_to video_path(video) do %>
+      <%= cl_video_tag video.video.key, class: "card-img-top rounded" %>
+    <% end %>
   <% end %>
   </div>
+
+<% else %>
+
+  <div>
+    <p><i>No results</i></p>
+  </div>
+
+  <div class="container d-flex justify-content-around" style="padding-top: 12px;">
+    <a href="/videos?search=basics" class="px-1"><button type="button" class="btn btn-light category">Basics</button></a>
+    <a href="/videos?search=greetings" class="px-1"><button type="button" class="btn btn-light category">Greetings</button></a>
+    <a href="/videos?search=phrases" class="px-1"><button type="button" class="btn btn-light category">Phrases</button></a>
+  </div>
+
+<% end %>
+</div>

@@ -10,3 +10,4 @@ pin "@popperjs/core", to: "popper.js", preload: true
 
 pin "menu"
 pin "sweetalert2", to: "https://ga.jspm.io/npm:sweetalert2@11.7.2/dist/sweetalert2.all.js"
+pin "typed.js" # @2.1.0

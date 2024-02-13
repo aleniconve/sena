@@ -14,22 +14,26 @@ class VideosController < ApplicationController
 
   def show
     @video = Video.find(params[:id])
+    @video.increment!(:search_count)
     @bookmark = Bookmark.new
+    @search = params[:search]
+    @related_videos = Video.where(category: @video.category)
   end
 
   def index
     @bookmark = Bookmark.new
+    @search = params[:search]
     if params[:search]
       @keyword = params[:search].strip
       if @keyword.blank?
       else
-        @search = Video.where("lower(name) like ?", "%#{@keyword.downcase}%")
+        @results = Video.where("lower(name) like ?", "%#{@keyword.downcase}%")
                   .or(Video.where("lower(category) like ?", "%#{@keyword.downcase}%"))
       end
-      if @search.blank?
+      if @results.blank?
         @message = "No results."
       else
-        @videos = @search
+        @videos = @results
       end
     end
   end
