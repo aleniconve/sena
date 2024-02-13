@@ -1,0 +1,46 @@
+<%= render "shared/navbar" %>
+
+<div style="height: 12px;"></div>
+
+<div class="container" style="padding-top: 90px;">
+  <%= link_to :back do %>
+    <i class="fa-solid fa-arrow-left fa-lg"></i>
+  <% end %>
+
+  <div style="height: 12px;"></div>
+
+  <%= cl_video_tag @video.video.key, controls: true, class: "card-img-top rounded" %>
+  <div class="d-flex justify-content-start">
+    <p style="font-weight: 600;"><%= @video.name %></p>
+  </div>
+
+  <div style="height: 10px;"></div>
+  <%= render "bookmarks/form", video: @video, bookmark: @bookmark %>
+  <%= render "videos/share", video: @video %>
+
+  <div style="height: 36px;"></div>
+
+  <div>
+    <h5>Related signs</h5>
+    <div style="height: 12px;"></div>
+
+    <div class="flex">
+      <% @related_videos.each do |video| %>
+      <div style="margin-right: 12px;">
+        <%= link_to video_path(video) do %>
+        <div class="relative">
+          <%= cl_video_tag video.video.key, class: "rounded item flex-item" %>
+          <div class="absolute">
+            <%# <i class="fa-regular fa-bookmark fa-xl opacity-50" style="color: white;"></i> %>
+          </div>
+        </div>
+        <% end %>
+        <div class="d-flex justify-content-start">
+          <p style="font-weight: 600;"><%= video.name %></p>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+
+</div>
