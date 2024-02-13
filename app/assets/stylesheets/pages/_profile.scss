@@ -33,3 +33,10 @@
 a {
   text-decoration: none;
 }
+
+.card-body {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  text-wrap: balance;
+}
