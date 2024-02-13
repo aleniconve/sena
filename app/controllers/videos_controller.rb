@@ -10,6 +10,8 @@ class VideosController < ApplicationController
     else
       redirect_to profile_path, alert: "Video upload failed!"
     end
+
+    @video
   end
 
   def show
@@ -39,6 +41,7 @@ class VideosController < ApplicationController
   end
 
   private
+  
   def video_params
     params.require(:video).permit(:name, :description, :video, :category)
   end
