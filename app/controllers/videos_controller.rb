@@ -14,6 +14,7 @@ class VideosController < ApplicationController
 
   def show
     @video = Video.find(params[:id])
+    @video.increment!(:search_count)
     @bookmark = Bookmark.new
     @search = params[:search]
     @related_videos = Video.where(category: @video.category)
