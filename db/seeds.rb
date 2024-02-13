@@ -100,7 +100,7 @@ new.video.attach(io: file, filename: video, content_type: "video/mp4")
 new.save!
 
 video = "v1707736752/Photographer_smrxva.mp4"
-new = Video.new(name: "Photographer", category: "profession", user_id: 1, description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.")
+new = Video.new(name: "Photographer", category: "work", user_id: 1, description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.")
 file = URI.open("https://res.cloudinary.com/dq1ieegre/video/upload/#{video}")
 new.video.attach(io: file, filename: video, content_type: "video/mp4")
 new.save!

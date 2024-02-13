@@ -4,19 +4,38 @@
 
 <div class="container" style="padding-top: 90px;">
   <%= link_to :back do %>
-    <i class="fa-solid fa-arrow-left fa-lg"></i>
+    <i class="fa-solid fa-arrow-left fa-xl"></i>
   <% end %>
+
+  <div style="height: 18px;"></div>
+
+  <div>
+    <h4><strong><%= @video.name %></strong></h4>
+  </div>
 
   <div style="height: 12px;"></div>
 
-  <%= cl_video_tag @video.video.key, controls: true, class: "card-img-top rounded" %>
-  <div class="d-flex justify-content-start">
-    <p style="font-weight: 600;"><%= @video.name %></p>
+  <div class="d-flex justify-content-between">
+    <div>
+      <%= cl_video_tag @video.video.key, controls: true, class: "card-img-top rounded" %>
+    </div>
+    <div style="width: 24px;"></div>
+    <div>
+      <div style="height: 12px;"></div>
+      <div style="text-align: right;" data-controller="favorite" data-favorite-feedback-text-value="<i class='fa-solid fa-heart fa-xl'></i>">
+        <div data-favorite-target="heart" data-action="click->favorite#like"><i class="fa-regular fa-heart fa-xl"></i></div>
+      </div>
+      <div style="height: 12px;"></div>
+      <div style="text-align: right;" data-controller="share" data-share-feedback-text-value="<i class='fa-solid fa-copy fa-xl'></i>">
+        <input type="hidden" data-share-target="url" value="<%= cl_video_path @video.video.key %>">
+        <div data-share-target="button" data-action="click->share#copy"><i class="fa-regular fa-copy fa-xl"></i></div>
+      </div>
+      <div style="height: 12px;"></div>
+      <div style="text-align: right;">
+        <i class="fa-regular fa-folder fa-xl"></i>
+      </div>
+    </div>
   </div>
-
-  <div style="height: 10px;"></div>
-  <%= render "bookmarks/form", video: @video, bookmark: @bookmark %>
-  <%= render "videos/share", video: @video %>
 
   <div style="height: 36px;"></div>
 
