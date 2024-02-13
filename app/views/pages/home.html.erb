@@ -1,4 +1,4 @@
-<div class="container" style="height: 568px; background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(https://res.cloudinary.com/dq1ieegre/image/upload/v1707731772/home_background_oydzxl.jpg    ); background-position: center; background-size: 600px;">
+<div class="container" style="height: 100vh; background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(https://res.cloudinary.com/dq1ieegre/image/upload/v1707731772/home_background_oydzxl.jpg); background-position: center;">
   <div class="d-flex justify-content-between align-items-center">
     <div class="d-flex justify-content-center align-items-center">
       <div style="color: white;">
@@ -13,9 +13,7 @@
     </div>
   </div>
 
-  <div style="height: 12px;"></div>
-
-  <div style="height: 90px;"></div>
+  <div style="height: 120px;"></div>
 
   <div class="slogan" data-controller="typed">
     <h2>Bridging Worlds<br>
@@ -40,7 +38,7 @@
     </div>
   </div>
 
-  <div style="height: 60px; color: white;" class="d-flex justify-content-center align-items-end">
+  <div style="height: 90px; color: white;" class="d-flex justify-content-center align-items-end">
     <i class="fa-solid fa-hand-point-down fa-xl fa-bounce" style=" --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1; --fa-bounce-rebound: 0; --fa-animation-iteration-count: 3;"></i>
   </div>
 </div>
@@ -52,8 +50,13 @@
     <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Browse by category</button>
     <ul class="dropdown-menu">
       <li><a class="dropdown-item" href="/videos?search=basics">Basics</a></li>
+      <li><a class="dropdown-item" href="/videos?search=family">Family</a></li>
       <li><a class="dropdown-item" href="/videos?search=food">Food</a></li>
       <li><a class="dropdown-item" href="/videos?search=greetings">Greetings</a></li>
+      <li><a class="dropdown-item" href="/videos?search=phrases">Phrases</a></li>
+      <li><a class="dropdown-item" href="/videos?search=sports">Sports</a></li>
+      <li><a class="dropdown-item" href="/videos?search=time">Time</a></li>
+      <li><a class="dropdown-item" href="/videos?search=work">Work</a></li>
     </ul>
   </div>
 
@@ -67,12 +70,10 @@
       <% @videos.each do |video| %>
       <div style="margin-right: 12px;">
         <div class="relative">
-          <%= cl_video_tag video.video.key, class: "rounded item flex-item" %>
+          <%= link_to video_path(video) do %>
+            <%= cl_video_tag video.video.key, class: "rounded item flex-item" %>
+          <% end %>
           <div class="absolute">
-            <%= simple_form_for [video, @bookmark] do |f| %>
-              <input name="bookmark[folder_id]" type="hidden" value="1">
-              <button type="submit" style="background: none; border: 0;"><i class="fa-regular fa-bookmark fa-xl opacity-50" style="color: white;"></i></button>
-            <% end %>
           </div>
         </div>
         <div class="d-flex justify-content-start">
@@ -93,12 +94,10 @@
       <% @most_searched_videos.each do |video| %>
       <div style="margin-right: 12px;">
         <div class="relative">
-          <%= cl_video_tag video.video.key, class: "rounded item flex-item", controls:true %>
+          <%= link_to video_path(video) do %>
+            <%= cl_video_tag video.video.key, class: "rounded item flex-item" %>
+          <% end %>
           <div class="absolute">
-            <%= simple_form_for [video, @bookmark] do |f| %>
-              <input name="bookmark[folder_id]" type="hidden" value="1">
-              <button type="submit" style="background: none; border: 0;"><i class="fa-regular fa-bookmark fa-xl opacity-50" style="color: white;"></i></button>
-            <% end %>
           </div>
         </div>
         <div class="d-flex justify-content-start">
