@@ -16,7 +16,7 @@ User.create(id: 1, email: "user@user.com", first_name: "Pedro", last_name: "Mira
 
 puts "Creating folders ..."
 
-Folder.create(name: "basics", user_id: 1)
+Folder.create(id: 1, name: "Favorites", user_id: 1)
 
 # puts "Creating bookmarks ..."
 # Bookmark.create(folder_id: 1, video_id: 1)

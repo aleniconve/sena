@@ -30,7 +30,7 @@
     Sign Language.</h2>
   </div>
 
-  <div style="height: 60px;"></div>
+  <div style="height: 90px;"></div>
 
   <div>
     <div class="mx-auto mb-1">
@@ -47,20 +47,42 @@
     </div>
   </div>
 
-  <div style="height: 90px; color: white;" class="d-flex justify-content-center align-items-end">
-    <i class="fa-solid fa-hand-point-down fa-lg fa-bounce" style=" --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1; --fa-bounce-rebound: 0; --fa-animation-iteration-count: 3;"></i>
+  <div style="height: 60px; color: white;" class="d-flex justify-content-center align-items-end">
+    <i class="fa-solid fa-hand-point-down fa-xl fa-bounce" style=" --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1; --fa-bounce-rebound: 0; --fa-animation-iteration-count: 3;"></i>
   </div>
 </div>
 
 <div class="container">
   <div style="height: 12px;"></div>
 
+<%# <div>
+    <h5>Categories</h5>
+    <div style="height: 12px;"></div>
   <div class="d-flex">
-    <a href="/videos?search=basics"><button type="button" class="btn btn-light category">Basics</button></a>
+    <div style="height: 12px;"></div>
+    <a href="/videos?search=basics"><button type="button" class="btn-lg btn btn-light category">Basics</button></a>
     <div style="width: 12px;"></div>
-    <a href="/videos?search=food"><button type="button" class="btn btn-light category">Food</button></a>
+    <a href="/videos?search=food"><button type="button" class="btn-lg btn btn-light category">Food</button></a>
     <div style="width: 12px;"></div>
-    <a href="/videos?search=greetings"><button type="button" class="btn btn-light category">Greetings</button></a>
+    <a href="/videos?search=greetings"><button type="button" class="btn-lg btn btn-light category">Greetings</button></a>
+    <div style="width: 12px;"></div>
+    <a href="/videos?search=food"><button type="button" class="btn-lg btn btn-light category">Food</button></a>
+    <div style="width: 12px;"></div>
+    <a href="/videos?search=greetings"><button type="button" class="btn-lg btn btn-light category">Greetings</button></a>
+    <div style="width: 12px;"></div>
+    <a href="/videos?search=food"><button type="button" class="btn-lg btn btn-light category">Food</button></a>
+    <div style="width: 12px;"></div>
+    <a href="/videos?search=greetings"><button type="button" class="btn-lg btn btn-light category">Greetings</button></a>
+  </div>
+</div> %>
+
+  <div class="d-flex justify-content-end input-group">
+    <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Browse by category</button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="/videos?search=basics">Basics</a></li>
+      <li><a class="dropdown-item" href="/videos?search=food">Food</a></li>
+      <li><a class="dropdown-item" href="/videos?search=greetings">Greetings</a></li>
+    </ul>
   </div>
 
   <div style="height: 36px;"></div>
@@ -72,16 +94,43 @@
     <div class="flex">
       <% @videos.each do |video| %>
       <div style="margin-right: 12px;">
-        <div>
-          <%= cl_video_tag video.video.key, class: "rounded item flex-item", controls: true %>
+        <div class="relative">
+          <%= cl_video_tag video.video.key, class: "rounded item flex-item" %>
+          <div class="absolute">
+            <%= simple_form_for [video, @bookmark] do |f| %>
+              <input name="bookmark[folder_id]" type="hidden" value="1">
+              <button type="submit" style="background: none; border: 0;"><i class="fa-regular fa-bookmark fa-xl opacity-50" style="color: white;"></i></button>
+            <% end %>
+          </div>
         </div>
-        <div class="d-flex justify-content-between align-items-center">
-          <div class="d-flex justify-content-start align-items-center">
-            <p style="font-weight: 600;"><%= video.name %></p>
+        <div class="d-flex justify-content-start">
+          <p style="font-weight: 600;"><%= video.name %></p>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div style="height: 24px;"></div>
+
+  <div>
+    <h5>Numbers & letters</h5>
+    <div style="height: 12px;"></div>
+
+    <div class="flex">
+      <% @spotlight.sort.each do |video| %>
+      <div style="margin-right: 12px;">
+        <div class="relative">
+          <%= cl_video_tag video.video.key, class: "rounded item flex-item" %>
+          <div class="absolute">
+            <%= simple_form_for [video, @bookmark] do |f| %>
+              <input name="bookmark[folder_id]" type="hidden" value="1">
+              <button type="submit" style="background: none; border: 0;"><i class="fa-regular fa-bookmark fa-xl opacity-50" style="color: white;"></i></button>
+            <% end %>
           </div>
-          <div class="d-flex justify-content-end align-items-center">
-            <%# <i class="fa-solid fa-heart fa-lg"></i> %>
-          </div>
+        </div>
+        <div class="d-flex justify-content-start">
+          <p style="font-weight: 600;"><%= video.name %></p>
         </div>
       </div>
       <% end %>

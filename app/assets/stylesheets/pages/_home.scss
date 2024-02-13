@@ -56,3 +56,18 @@ h5, h6 {
 .flex-item {
   flex: 0 0 auto;
 }
+
+.flex::-webkit-scrollbar {
+  display: none;
+}
+
+
+div.relative {
+  position: relative;
+}
+
+div.absolute {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
