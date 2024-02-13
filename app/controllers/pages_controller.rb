@@ -6,10 +6,14 @@ class PagesController < ApplicationController
     else
       @videos = Video.all.sample(8)
     end
+    @most_searched_videos = Video.order(search_count: :desc).limit(10)
+    @most_searched_videos ||= []
   end
+
 
   def profile
       if current_user
+        @folders_with_videos = current_user.folders.includes(:videos)
         @folders = Folder.where(user_id: current_user.id)
         @folder = Folder.new
         @video = Video.new

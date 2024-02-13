@@ -71,20 +71,40 @@
 
     <div class="flex">
       <% @videos.each do |video| %>
-      <div style="margin-right: 12px;">
-        <div>
-          <%= cl_video_tag video.video.key, class: "rounded item flex-item", controls: true %>
-        </div>
-        <div class="d-flex justify-content-between align-items-center">
-          <div class="d-flex justify-content-start align-items-center">
-            <p style="font-weight: 600;"><%= video.name %></p>
+        <div style="margin-right: 12px;">
+          <div>
+            <%= cl_video_tag video.video.key, class: "rounded item flex-item", controls: true %>
           </div>
-          <div class="d-flex justify-content-end align-items-center">
-            <%# <i class="fa-solid fa-heart fa-lg"></i> %>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="d-flex justify-content-start align-items-center">
+              <p style="font-weight: 600;"><%= video.name %></p>
+            </div>
+            <div class="d-flex justify-content-end align-items-center">
+              <%# <i class="fa-solid fa-heart fa-lg"></i> %>
+            </div>
           </div>
         </div>
-      </div>
       <% end %>
     </div>
-  </div>
+  <div style="height: 12px;"></div>
+  <div style="height: 12px;"></div>
+    <h5>Most Searched Videos</h5>
+    <div style="height: 12px;"></div>
+    <div class="flex">
+      <% @most_searched_videos.each do |video| %>
+        <div style="margin-right: 12px;">
+          <div>
+            <%= cl_video_tag video.video.key, class: "rounded item flex-item", controls: true %>
+          </div>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="d-flex justify-content-start align-items-center">
+              <p style="font-weight: 600;"><%= video.name %></p>
+            </div>
+            <div class="d-flex justify-content-end align-items-center">
+              <%# <i class="fa-solid fa-heart fa-lg"></i> %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
 </div>
