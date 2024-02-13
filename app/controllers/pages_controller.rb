@@ -1,13 +1,18 @@
 class PagesController < ApplicationController
   def home
-    @videos = Video.all.sample(8)
-    @spotlight = Video.where("name like ?", "%Alphabet%")
-                  .or(Video.where("name like ?", "%Numbers%"))
-    @bookmark = Bookmark.new
+    if current_user
+      @videos = Video.all.sample(8)
+      @bookmark = Bookmark.new
+    else
+      @videos = Video.all.sample(8)
+    end
+    @most_searched_videos = Video.order(search_count: :desc).limit(10)
+    @most_searched_videos ||= []
   end
 
   def profile
     if current_user
+      @folders_with_videos = current_user.folders.includes(:videos)
       @folders = Folder.where(user_id: current_user.id)
       @folder = Folder.new
       @video = Video.new

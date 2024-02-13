@@ -8,43 +8,70 @@
     <p><i><%= @folders.count %> folders</i></p>
   </div>
 
-  <div style="height: 12px;"></div>
-
-  <div class="folder">
-    <% @folders.each do |folder| %>
-      <%= link_to folder_path(folder) do %>
-      <div class="card d-flex justify-content-between align-items-center bg-light" style="border-color: #DDDDDD;">
-        <div class="card-body">
-          <strong><%= folder.name.capitalize %></strong> (<%= folder.bookmarks.count %>)
-        </div>
-      </div>
-      <% end %>
-    <% end %>
-  </div>
-
-  <div style="height: 36px;"></div>
-
   <%= simple_form_for @folder do |f| %>
   <div class="input-group">
     <div class="input-group-prepend">
-      <label class="input-group-text">Create</label>
+      <label class="input-group-text">Add</label>
     </div>
-    <%= f.text_field :name, class: "form-control", placeholder: "New folder" %>
+    <%= f.text_field :name, class: "form-control", placeholder: "New folder", :autocomplete => :off%>
     <div class="input-group-append">
       <button class="btn btn-primary" type="submit"><i class="fa-solid fa-folder-plus"></i></button>
     </div>
   </div>
   <% end %>
+  <div style="height: 12px;"></div>
+<h5>My Folders</h5>
+<div style="height: 12px;"></div>
+<div class="flex">
+  <div class="row">
+    <% @folders_with_videos.each do |folder| %>
+      <div style="margin-right: 12px;">
+        <div class="flex">
+          <h6><strong><%= folder.name %></strong></h6>
+          <%= link_to "🗑", folder_path(folder), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+        </div>
+        <div class="flex">
+          <% folder.videos.each do |video| %>
+            <div style="margin-right: 12px;">
+              <%= cl_video_tag video.video.key, class: "rounded item flex-item", controls: true %>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex justify-content-start align-items-center">
+                  <p style="font-weight: 600;"><%= video.name %></p>
+                </div>
+                <div class="d-flex justify-content-end align-items-center">
+                  <%# Add any additional actions/buttons here %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
 
 
+  <%# <div class="folder"> %>
+    <%# @folders.each do |folder| %>
+      <%#= link_to folder_path(folder) do %>
+      <%# <div class="card d-flex justify-content-between align-items-center bg-light" style="border-color: #DDDDDD;"> %>
+        <%# <div class="card-body"> %>
+          <%# INSERT HERE THE DELETE BUTTON IF YOU NEED TO UNCOMMENT THIS LINE %>
+          <%#= link_to "🗑", folder_path(folder), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+        <%# </div> %>
+      <%# </div> %>
+      <%# end %>
+    <%# end %>
+  <%# </div> %>
   <div style="height: 36px;"></div>
 
     <%= simple_form_for @video do |f| %>
       <div class="input-group">
-        <div class="input-group-prepend">
+        <%# <div class="input-group-prepend">
           <label class="input-group-text">Upload</label>
-        </div>
-        <%= f.input :name, class: "form-control", placeholder: 'Title' %>
+        </div> %>
+        <h5>Upload your own video</h5>
+        <%= f.input :name, class: "form-control", placeholder: 'Title', :autocomplete => :off %>
         <%= f.input :video, as: :file, class: "form-control" %>
         <%= f.input :category, collection: Folder.where(user: current_user), prompt: "Select a folder", label: false, class: "form-control" %>
         <div class="input-group-append">
@@ -52,3 +79,4 @@
         </div>
       </div>
     <% end %>
+</div>
