@@ -1,4 +1,9 @@
 class VideosController < ApplicationController
+
+  def new
+    @video = Video.new
+  end
+
   def create
     @video = Video.new(video_params)
     @video.user = current_user
