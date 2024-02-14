@@ -12,8 +12,9 @@ class PagesController < ApplicationController
 
   def profile
     if current_user
+      @favorites_folder = current_user.folders.find_by(name: "Favorites")
       @folders_with_videos = current_user.folders.includes(:videos)
-      @folders = Folder.where(user_id: current_user.id)
+      @folders = current_user.folders.where.not(name: "Favorites")
       @folder = Folder.new
       @video = Video.new
     else
