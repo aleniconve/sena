@@ -1,5 +1,9 @@
 class VideosController < ApplicationController
 
+  def new
+    @video = Video.new
+  end
+
   def create
     @video = Video.new(video_params)
     @video.user = current_user
@@ -17,6 +21,7 @@ class VideosController < ApplicationController
     @video = Video.find(params[:id])
     @video.increment!(:search_count)
     @related_videos = Video.where(category: @video.category).sample(4)
+    
     @fav_id = Folder.where(name: "Favorites").and(Folder.where(user: current_user))
     @favorite = Bookmark.where(video: @video).and(Bookmark.where(folder_id: @fav_id))
   end
@@ -36,6 +41,8 @@ class VideosController < ApplicationController
         @videos = @results
       end
     end
+
+    @fav_id = Folder.where(name: "Favorites").and(Folder.where(user: current_user))
   end
 
   private

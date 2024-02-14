@@ -11,7 +11,17 @@
   <div class="d-flex justify-content-between">
     <div>
       <%= cl_video_tag @video.video.key, controls: true, class: "card-img-top rounded" %>
+
+      <%= simple_form_for [@video, @bookmark] do |f| %>
+      <div class="input-group" style="width: 100%;">
+        <%= f.association :folder, collection: Folder.where(user: current_user).order(:name), prompt: "Add to folder", label: false %>
+        <div class="input-group-append">
+          <button class="btn btn-primary rounded-right" type="submit"><i class="fa-solid fa-bookmark"></i></button>
+        </div>
+      </div>
+      <% end %>
     </div>
+
     <div style="width: 24px;"></div>
     <div class="d-flex flex-column align-items-center">
       <div style="height: 12px;"></div>
@@ -32,26 +42,12 @@
         <input type="hidden" data-share-target="url" value="<%= cl_video_path @video.video.key %>">
         <div data-share-target="button" data-action="click->share#copy"><i class="fa-regular fa-copy fa-xl"></i></div>
       </div>
-      <div style="height: 12px;"></div>
+      <%# <div style="height: 12px;"></div>
       <div>
         <i class="fa-regular fa-folder fa-xl"></i>
-      </div>
+      </div> %>
     </div>
   </div>
-
-  <% if current_user %>
-  <%= simple_form_for [@video, @bookmark] do |f| %>
-  <div class="input-group">
-    <div class="input-group-prepend">
-      <span class="input-group-text">Add to:</span>
-    </div>
-    <%= f.association :folder, collection: Folder.where(user: current_user).order(:name), prompt: "Select folder", label: false %>
-    <div class="input-group-append">
-      <button class="btn btn-primary rounded-right" type="submit"><i class="fa-solid fa-bookmark"></i></button>
-    </div>
-  </div>
-  <% end %>
-  <% end %>
 
   <div style="height: 36px;"></div>
 

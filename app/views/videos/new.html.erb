@@ -1,0 +1,16 @@
+<%= render "shared/navbar" %>
+
+<div class="container" style="padding-top: 90px;">
+  <div class="m-1">
+    <div style="height: 12px;"></div>
+
+<%= simple_form_for @video do |f| %>
+  <div class="input-group">
+    <h5>Upload Your Videos Here:</h5>
+    <%= f.input :category, collection: Folder.where(user: current_user), prompt: "Choose File", label: false, input_html: { class: "form-control" } %>
+    <%= f.input :video, as: :file, class: "form-control", label: false %>
+    <div class="input-group-append">
+      <%= f.submit 'Upload', class: "form-control", id: 'fileUpload', data: { disable_with: 'Uploading' } %>
+    </div>
+  </div>
+<% end %>
