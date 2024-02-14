@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>The page you were looking for doesn't exist (404)</title>
+  <title>We are sorry to tell you that this page does not exist! (404)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
   <style>
-  .rails-default-error-page {
+  /* .rails-default-error-page {
     background-color: #EFEFEF;
     color: #2E2F30;
     text-align: center;
@@ -50,18 +53,52 @@
     border-top-color: #DADADA;
     color: #666;
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
+  } */
+  h2 {
+    color: white;
+    font-family: "Bree Serif", serif;
+  }
+
+  p {
+    color: white;
+    font-family: "Bree Serif", serif;
+    text-wrap: wrap;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: "Bree Serif", serif;
+  }
+
+  a {
+    text-decoration: none;
+    color: white;
+  }
+
+  p {
+    width: 250px;
   }
   </style>
+
 </head>
 
 <body class="rails-default-error-page">
   <!-- This file lives in public/404.html -->
-  <div class="dialog">
     <div>
-      <h1>The page you were looking for doesn't exist.</h1>
-      <p>You may have mistyped the address or the page may have moved.</p>
+      <div class="container" style="height: 100vh; background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(https://res.cloudinary.com/dq1ieegre/image/upload/v1707731772/home_background_oydzxl.jpg); background-position: center;">
+          <h2>Where are you going?</h2>
+          <p><em>I guess you tried to go where no man is allowed to go...</em></p>
+          <p>If you are the application owner check the logs for more information.</p>
+          <p><a href="http://localhost:3000/">If you are <strong>NOT</strong> the application owner click me and go to the homepage</a></p>
+          <div>
+
+
+          </div>
+      </div>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
-  </div>
 </body>
 </html>
