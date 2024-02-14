@@ -1,17 +1,41 @@
 <%= render "shared/navbar" %>
 
 <div class="container" style="padding-top: 90px;">
-  <div class="m-1">
-    <p><%= link_to "⬅", profile_path, :style=>'text-decoration: none;' %></p><br>
-    <h4><strong><%= @folder.name.capitalize %></strong></h4>
-    <p><i><%= @folder.bookmarks.count %> <% if @folder.bookmarks.count == 1 %>video<% else %>videos<% end %></i></p>
+
+  <div>
+    <h3><%= @folder.name.capitalize %></h3>
   </div>
-  <div class="sigle-video">
-    <%@folder.bookmarks.each do |bookmark|%>
-    <%= cl_video_tag bookmark.video.video.key, class: "card-img-top rounded", controls: true %>
-    <%= link_to "🗑", bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-    <% end %>
+
+  <div style="height: 12px;"></div>
+
+  <% @folder.bookmarks.each do |bookmark| %>
+  <div class="d-flex justify-content-between">
+    <div>
+      <div>
+        <%= cl_video_tag bookmark.video.video.key, controls: true, class: "card-img-top rounded" %>
+      </div>
+      <div class="d-flex justify-content-start">
+        <p style="font-weight: 600;"><%= bookmark.video.name %></p>
+      </div>
+    </div>
+    <div style="width: 24px;"></div>
+    <div class="d-flex flex-column align-items-center">
+      <div style="height: 12px;"></div>
+      <div>
+        <%= link_to bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+          <i class="fa-solid fa-trash fa-xl"></i>
+        <% end %>
+      </div>
+      <div style="height: 12px;"></div>
+      <div data-controller="share" data-share-feedback-text-value="<i class='fa-solid fa-copy fa-xl'></i>">
+        <input type="hidden" data-share-target="url" value="<%= cl_video_path bookmark.video.video.key %>">
+        <div data-share-target="button" data-action="click->share#copy"><i class="fa-regular fa-copy fa-xl"></i></div>
+      </div>
+    </div>
   </div>
+  <div style="height: 12px;"></div>
+  <% end %>
+
 </div>
 
 <%= render "shared/footer" %>

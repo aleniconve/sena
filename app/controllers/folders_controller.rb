@@ -4,6 +4,8 @@ class FoldersController < ApplicationController
     @folder = Folder.find(params[:id])
     @videos = @folder.videos
     @bookmark = Bookmark.new
+    @fav_id = Folder.where(name: "Favorites").and(Folder.where(user: current_user))
+    @favorite = Bookmark.where(video: @video).and(Bookmark.where(folder_id: @fav_id))
     # @bookmark = Bookmark.find(params[:id])
     # @video = Video.find(params[:id])
     # display all bookmarks from this folder
