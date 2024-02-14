@@ -14,7 +14,7 @@ class FoldersController < ApplicationController
     @folder.name.capitalize!
     @folder.user = current_user
     if @folder.save
-      redirect_to profile_path, notice: "#{@folder.name} was successfully created!"
+      redirect_to profile_path #notice: "#{@folder.name} was successfully created!"
     else
       render "pages/profile"
     end

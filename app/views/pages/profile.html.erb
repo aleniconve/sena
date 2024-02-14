@@ -6,7 +6,15 @@
     <p><i><%= @folders.count %> folders</i></p>
   </div>
 
-  <%= simple_form_for @folder do |f| %>
+  <%= simple_form_for @folder, html: {
+      data: {
+        controller: "alert",
+        alert_icon_value: "success",
+        alert_title_value: "Folder created successfully",
+        alert_confirm_button_text_value: "OK!",
+        action: "submit->alert#initSweetalert",
+        turbo: false
+      } } do |f| %>
   <div class="input-group">
     <div class="input-group-prepend">
       <label class="input-group-text">Add</label>
