@@ -11,11 +11,14 @@
       body::-webkit-scrollbar {
         display: none;
       }
+      input:focus, textarea:focus, select:focus, button:focus {
+        outline: none;
+        box-shadow: none;
+      }
     </style>
   </head>
 
   <body>
     <%= yield %>
-    <%= render "shared/flashes" %>
   </body>
 </html>

@@ -6,7 +6,8 @@ export default class extends Controller {
   connect() {
     const typed = new Typed(this.element, {
       strings: ["<h2>Bridging Worlds<br>through<br>Sign Language.</h2>"],
-      typeSpeed: 50
+      typeSpeed: 50,
+      showCursor: false,
     });
   }
 }
