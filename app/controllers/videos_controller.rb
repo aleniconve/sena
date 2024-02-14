@@ -6,9 +6,9 @@ class VideosController < ApplicationController
     if @video.save
       folder = Folder.find(@video.category)
       Bookmark.create(folder: folder, video: @video)
-      redirect_to profile_path, notice: "#{@video.name} was successfully uploaded!"
+      redirect_to profile_path #notice: "#{@video.name} was successfully uploaded!"
     else
-      redirect_to profile_path, alert: "Video upload failed!"
+      redirect_to profile_path #alert: "Video upload failed!"
     end
   end
 
