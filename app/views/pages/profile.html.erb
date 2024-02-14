@@ -78,7 +78,15 @@
   <div style="height: 12px;"></div>
   <div style="height: 12px;"></div>
 
-    <%= simple_form_for @video do |f| %>
+    <%= simple_form_for @video, html: {
+      data: {
+        controller: "alert",
+        alert_icon_value: "success",
+        alert_title_value: "Video uploaded successfully",
+        alert_confirm_button_text_value: "OK!",
+        action: "submit->alert#initSweetalert",
+        turbo: false
+      } } do |f| %>
   <div class="input-group">
     <h5>Upload your own video</h5>
     <%= f.input :name, class: "form-control", placeholder: 'Title', label: false, :autocomplete => :off %>
