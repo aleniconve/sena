@@ -1,3 +1,5 @@
+<% @favorites = Folder.where(name: "Favorites").and(Folder.where(user: current_user)) %>
+
 <div style="height: 60px;"></div>
 
 <nav class="container bg-primary fixed-bottom">
@@ -8,18 +10,13 @@
       <% end %>
     </div>
     <div>
-      <%= link_to profile_path do %>
+      <%= link_to folder_path(42) do %>
         <i class="fa-solid fa-heart fa-xl" style="color: white;"></i>
       <% end %>
     </div>
     <div>
       <%= link_to profile_path do %>
         <i class="fa-solid fa-square-plus fa-xl" style="color: white;"></i>
-      <% end %>
-    </div>
-    <div>
-      <%= link_to profile_path do %>
-        <i class="fa-solid fa-folder fa-xl" style="color: white;"></i>
       <% end %>
     </div>
     <div>
