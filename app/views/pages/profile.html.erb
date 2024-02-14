@@ -1,10 +1,8 @@
 <%= render "shared/navbar" %>
 
-<div style="height: 12px;"></div>
-
 <div class="container" style="padding-top: 90px;">
   <div class="m-1">
-    <h4><strong><%= current_user.first_name %>'s Library</strong></h4>
+    <h3><%= current_user.first_name %>'s Library</h3>
     <p><i><%= @folders.count %> folders</i></p>
   </div>
 
@@ -13,7 +11,7 @@
     <div class="input-group-prepend">
       <label class="input-group-text">Add</label>
     </div>
-    <%= f.text_field :name, class: "form-control", placeholder: "New folder", :autocomplete => :off%>
+    <%= f.text_field :name, class: "form-control", placeholder: "New folder", :autocomplete => :off %>
     <div class="input-group-append">
       <button class="btn btn-primary" type="submit"><i class="fa-solid fa-folder-plus"></i></button>
     </div>
@@ -80,3 +78,5 @@
       </div>
     <% end %>
 </div>
+
+<%= render "shared/footer" %>

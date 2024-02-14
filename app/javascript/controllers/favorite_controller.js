@@ -1,15 +1,13 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  static targets = ["heart", "url"]
+  static targets = ["heart"]
 
   static values = {
-    feedbackText: String
+    changeStatus: String
   }
 
   like() {
-    this.heartTarget.innerHTML = this.feedbackTextValue;
-    this.heartTarget.classList.add("disabled");
-    navigator.clipboard.writeText(this.urlTarget.value);
+    this.heartTarget.innerHTML = this.changeStatusValue;
   }
 }

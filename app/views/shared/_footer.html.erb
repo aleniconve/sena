@@ -1,3 +1,31 @@
-<nav class="px-3 py-2 bg-primary bottom" style="margin-top: 24px;">
-  <span style="color: white; font-size: x-small;">© 2024 Signary, Inc.</span>
+<div style="height: 60px;"></div>
+
+<nav class="container bg-primary fixed-bottom">
+  <div class="d-flex justify-content-around align-items-center">
+    <div>
+      <%= link_to root_path do %>
+        <i class="fa-solid fa-home fa-xl" style="color: white;"></i>
+      <% end %>
+    </div>
+    <div>
+      <%= link_to profile_path do %>
+        <i class="fa-solid fa-heart fa-xl" style="color: white;"></i>
+      <% end %>
+    </div>
+    <div>
+      <%= link_to profile_path do %>
+        <i class="fa-solid fa-square-plus fa-xl" style="color: white;"></i>
+      <% end %>
+    </div>
+    <div>
+      <%= link_to profile_path do %>
+        <i class="fa-solid fa-folder fa-xl" style="color: white;"></i>
+      <% end %>
+    </div>
+    <div>
+      <%= link_to profile_path do %>
+        <i class="fa-solid fa-user fa-xl" style="color: white;"></i>
+      <% end %>
+    </div>
+  </div>
 </nav>

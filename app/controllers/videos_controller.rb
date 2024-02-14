@@ -10,30 +10,28 @@ class VideosController < ApplicationController
     else
       redirect_to profile_path, alert: "Video upload failed!"
     end
-
-    @video
   end
 
   def show
+    @bookmark = Bookmark.new
     @video = Video.find(params[:id])
     @video.increment!(:search_count)
-    @bookmark = Bookmark.new
-    @search = params[:search]
     @related_videos = Video.where(category: @video.category).sample(4)
+    @fav_id = Folder.where(name: "Favorites").and(Folder.where(user: current_user))
+    @favorite = Bookmark.where(video: @video).and(Bookmark.where(folder_id: @fav_id))
   end
 
   def index
-    @bookmark = Bookmark.new
-    @search = params[:search]
     if params[:search]
       @keyword = params[:search].strip
       if @keyword.blank?
+        @popular_videos = Video.all.sample(8)
       else
         @results = Video.where("lower(name) like ?", "%#{@keyword.downcase}%")
-                  .or(Video.where("lower(category) like ?", "%#{@keyword.downcase}%"))
+                   .or(Video.where("lower(category) like ?", "%#{@keyword.downcase}%"))
       end
       if @results.blank?
-        @message = "No results."
+        @popular_videos = Video.all.sample(8)
       else
         @videos = @results
       end
@@ -41,7 +39,7 @@ class VideosController < ApplicationController
   end
 
   private
-  
+
   def video_params
     params.require(:video).permit(:name, :description, :video, :category)
   end

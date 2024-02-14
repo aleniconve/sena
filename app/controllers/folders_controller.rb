@@ -26,11 +26,9 @@ class FoldersController < ApplicationController
     redirect_to folder_path
   end
 
-
   private
 
   def folder_params
     params.require(:folder).permit(:name)
   end
-
 end
