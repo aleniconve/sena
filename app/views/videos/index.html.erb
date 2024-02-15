@@ -1,7 +1,7 @@
 <%= render "shared/navbar" %>
 
-<div class="container" style="padding-top: 90px;">
 <% if @videos %>
+<div class="container" style="padding-top: 90px;">
 
   <div>
     <h3>"<%= @keyword.downcase %>"</h3>
@@ -24,29 +24,21 @@
     </div>
   <% end %>
   </div>
+</div>
 
 <% else %>
 
+<div class="container" style="padding-top: 90px;">
   <div>
-    <p><i>No results</i></p>
+    <p><i>No results.</i></p>
+    <div style="height: 6px;"></div>
+    <p><span style="font-weight: 600;">Examples:</span> Hello, How are you, Basics</p>
   </div>
+</div>
 
-  <div class="d-flex justify-content-end input-group">
-    <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Browse by category</button>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="/videos?search=basics">Basics</a></li>
-      <li><a class="dropdown-item" href="/videos?search=family">Family</a></li>
-      <li><a class="dropdown-item" href="/videos?search=food">Food</a></li>
-      <li><a class="dropdown-item" href="/videos?search=greetings">Greetings</a></li>
-      <li><a class="dropdown-item" href="/videos?search=phrases">Phrases</a></li>
-      <li><a class="dropdown-item" href="/videos?search=sports">Sports</a></li>
-      <li><a class="dropdown-item" href="/videos?search=time">Time</a></li>
-      <li><a class="dropdown-item" href="/videos?search=work">Work</a></li>
-    </ul>
-  </div>
+<hr>
 
-  <div style="height: 36px;"></div>
-
+<div class="container">
   <div>
     <h4>Popular signs</h4>
     <div style="height: 12px;"></div>
@@ -68,8 +60,8 @@
       <% end %>
     </div>
   </div>
+</div>
 
 <% end %>
-</div>
 
 <%= render "shared/footer" %>

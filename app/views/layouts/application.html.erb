@@ -3,13 +3,22 @@
   <head>
     <title>Signary</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
     <style>
       body::-webkit-scrollbar {
         display: none;
+      }
+      input:focus, textarea:focus, select:focus, button:focus {
+        outline: none;
+        box-shadow: none;
       }
     </style>
     <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
@@ -28,6 +37,11 @@
 
   <body>
     <%= yield %>
-    <%= render "shared/flashes" %>
+
+    <script>
+      $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+      });
+    </script>
   </body>
 </html>

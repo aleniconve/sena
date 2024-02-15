@@ -10,11 +10,17 @@
   color: white;
 }
 
+p {
+  padding: 0;
+  margin: 0;
+}
+
 h2 {
   font-size: xx-large;
   line-height: 1.75;
   color: white;
   font-weight: 400;
+  margin: 0;
 }
 
 h3, h4 {
@@ -26,7 +32,7 @@ h3, h4 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 12px;
-  // row-gap: 6px;
+  row-gap: 12px;
 }
 
 .category {
@@ -53,18 +59,7 @@ h3, h4 {
   display: none;
 }
 
-
-div.relative {
-  position: relative;
+hr {
+  padding: 0;
+  border-color: lightslategray;
 }
-
-div.absolute {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-}
-
-.slogan {
-  min-height: 140px;
-}
-
