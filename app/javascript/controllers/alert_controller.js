@@ -13,9 +13,6 @@ export default class extends Controller {
 
   initSweetalert(event) {
     event.preventDefault(); // Prevent the form to be submited after the submit button has been clicked
-    const fileInput = this.element.querySelector('input[name="video[video]"]');
-    console.log(fileInput.value);
-    console.log(this.element);
 
     Swal.fire({
       text: this.titleValue,
