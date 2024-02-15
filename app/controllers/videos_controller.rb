@@ -2,6 +2,7 @@ class VideosController < ApplicationController
 
   def new
     @video = Video.new
+    @folders = current_user.folders.where.not(name: "Favorites").order(:name)
   end
 
   def create
@@ -10,7 +11,7 @@ class VideosController < ApplicationController
     if @video.save
       folder = Folder.find(@video.category)
       Bookmark.create(folder: folder, video: @video)
-      redirect_to profile_path #notice: "#{@video.name} was successfully uploaded!"
+      redirect_to folder_path(folder) #notice: "#{@video.name} was successfully uploaded!"
     else
       redirect_to profile_path #alert: "Video upload failed!"
     end
@@ -24,7 +25,7 @@ class VideosController < ApplicationController
 
     @fav_id = Folder.where(name: "Favorites").and(Folder.where(user: current_user))
     @favorite = Bookmark.where(video: @video).and(Bookmark.where(folder_id: @fav_id))
-    @folders = Folder.where(user: current_user).order(:name)
+    @folders = current_user.folders.where.not(name: "Favorites").order(:name)
   end
 
   def index

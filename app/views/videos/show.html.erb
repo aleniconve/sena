@@ -17,7 +17,7 @@
     <div class="d-flex justify-content-start">
       <%= simple_form_for [@video, @bookmark] do |f| %>
         <div class="input-group">
-          <%= f.association :folder, collection: Folder.where(user: current_user).order(:name), class: "form-control", prompt: "Add to a folder", label: false %>
+          <%= f.association :folder, collection: @folders, class: "form-control", prompt: "Add to a folder", label: false %>
           <div class="input-group-append">
             <button class="btn btn-primary" type="submit"><i class="fa-solid fa-bookmark"></i></button>
           </div>
