@@ -7,6 +7,7 @@
 <%= simple_form_for @video do |f| %>
   <div class="input-group">
     <h5>Upload Your Videos Here:</h5>
+    <%= f.input :name, class: "form-control", placeholder: 'Video Name', label: false, :autocomplete => :off %>
     <%= f.input :category, collection: Folder.where(user: current_user), prompt: "Choose File", label: false, input_html: { class: "form-control" } %>
     <%= f.input :video, as: :file, class: "form-control", label: false %>
     <div class="input-group-append">
