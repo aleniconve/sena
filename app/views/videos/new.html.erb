@@ -4,25 +4,23 @@
   <div>
     <h3>Add a new video</h3>
   </div>
-</div>
 
-<hr>
-
-<div class="container">
   <div style="height: 24px;"></div>
 
-  <%= simple_form_for @video do |f| %>
-    <div class="input-group">
-      <%= f.input :name, class: "form-control", placeholder: "Video title", label: false, autocomplete: "off" %>
-      <%= f.input :category, collection: @folders, prompt: "Select a folder", label: false, input_html: { class: "form-control" } %>
-      <%= f.input :video, as: :file, class: "form-control", label: false %>
-      <div class="input-group-append">
-        <button class="btn btn-primary" type="submit"><i class="fa-solid fa-upload"></i></button>
+  <div data-controller="upload" data-upload-change-status-value="<p style='padding: 0; margin: 0;'>Uploading ...</p>">
+    <%= simple_form_for @video do |f| %>
+      <%= f.text_field :name, class: "form-control", placeholder: "Enter a name", style: "outline: none; box-shadow: none;", :autocomplete => :off %>
+      <div style="height: 16px;"></div>
+      <%= f.input :category, collection: @folders, prompt: "Select a folder", label: false, input_html: { class: "form-control", style: "outline: none; box-shadow: none;" } %>
+      <div class="input-group d-flex justify-content-end">
+        <%= f.input :video, as: :file, label: false, input_html: { class: "form-control", style: "outline: none; box-shadow: none;" } %>
+        <div class="input-group-append">
+          <button class="btn btn-primary" type="submit" data-upload-target="button" data-action="click->upload#busy" style="outline: none; box-shadow: none;"><i class="fa-solid fa-upload"></i></button>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 
 </div>
-
 
 <%= render "shared/footer" %>
