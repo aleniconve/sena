@@ -1,12 +1,6 @@
 <%= render "shared/navbar" %>
 
 <div class="container" style="padding-top: 90px;">
-  <%= link_to profile_path do %>
-    <i class="fa-solid fa-arrow-left fa-xl"></i>
-  <% end %>
-
-  <div style="height: 18px;"></div>
-
   <h3><%= @folder.name %></h3>
   <p><i><%= @folder.bookmarks.count %> <% if @folder.bookmarks.count == 1 %>video<% else %>videos<% end %></i></p>
 </div>
