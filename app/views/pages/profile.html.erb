@@ -7,15 +7,7 @@
 
   <div style="height: 24px;"></div>
 
-  <%= simple_form_for @folder, html: {
-      data: {
-        controller: "alert",
-        alert_icon_value: "success",
-        alert_title_value: "Folder created successfully",
-        alert_confirm_button_text_value: "OK",
-        action: "submit->alert#initSweetalert",
-        turbo: false
-      } } do |f| %>
+  <%= simple_form_for @folder do |f| %>
 
   <div class="input-group">
     <%= f.text_field :name, class: "form-control", placeholder: "Add a new folder", style: "outline: none; box-shadow: none;", :autocomplete => :off %>
