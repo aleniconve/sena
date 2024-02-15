@@ -1,0 +1,66 @@
+<%= render "shared/navbar" %>
+
+<div class="container" style="padding-top: 90px;">
+  <div>
+    <h3><%= current_user.first_name %>'s library</h3>
+  </div>
+
+  <div style="height: 24px;"></div>
+
+  <%= simple_form_for @folder do |f| %>
+
+  <div class="input-group">
+    <%= f.text_field :name, class: "form-control", placeholder: "Add a new folder", style: "outline: none; box-shadow: none;", :autocomplete => :off %>
+    <div class="input-group-append">
+      <button class="btn btn-primary" type="submit" style="outline: none; box-shadow: none;"><i class="fa-solid fa-folder-plus"></i></button>
+    </div>
+  </div>
+
+  <% end %>
+</div>
+
+<hr>
+
+<div class="container" >
+  <div class="row">
+    <div class="col-12">
+      <div class="input-group">
+        <button class="btn btn-outline-primary btn-block dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="width: 100%;">Select and view a folder</button>
+        <ul class="dropdown-menu" style="width: 100%;">
+          <% @folders.each do |folder| %>
+            <li><a class="dropdown-item" href="/folders/<%= folder.id %>"><%= folder.name %></a></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="height: 12px;"></div>
+
+<div class="container">
+  <div>
+    <h4>My folders</h4>
+  </div>
+
+  <div style="height: 12px;"></div>
+
+  <div class="folder">
+    <% @folders.each do |folder| %>
+      <div>
+      <%= link_to folder_path(folder) do %>
+      <div class="card bg-light">
+        <div class="card-body">
+          <p><span style="font-weight: 600;"><%= folder.name %></span> (<%= folder.bookmarks.count %>)</p>
+          <%= link_to folder_path(folder), data: { turbo_method: :delete } do %>
+            <i class="fa-solid fa-trash fa-lg"></i>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<%= render "shared/footer" %>

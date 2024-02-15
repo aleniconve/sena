@@ -10,7 +10,7 @@
       <% end %>
     </div>
     <div>
-      <%= link_to profile_path do %>
+      <%= link_to folders_path do %>
         <i class="fa-solid fa-bookmark fa-xl" style="color: white;"></i>
       <% end %>
     </div>
@@ -20,7 +20,7 @@
       <% end %>
     </div>
     <div>
-      <%= link_to folder_path(42) do %>
+      <%= link_to folder_path(current_user.folders.find_by(name: "Favorites").id) do %>
         <i class="fa-solid fa-heart fa-xl" style="color: white;"></i>
       <% end %>
     </div>

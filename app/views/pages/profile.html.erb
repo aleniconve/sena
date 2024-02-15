@@ -1,65 +1,41 @@
 <%= render "shared/navbar" %>
 
 <div class="container" style="padding-top: 90px;">
-  <div>
-    <h3><%= current_user.first_name %>'s Library</h3>
-  </div>
-
-  <div style="height: 24px;"></div>
-
-  <%= simple_form_for @folder do |f| %>
-
-  <div class="input-group">
-    <%= f.text_field :name, class: "form-control", placeholder: "Add a new folder", style: "outline: none; box-shadow: none;", :autocomplete => :off %>
-    <div class="input-group-append">
-      <button class="btn btn-primary" type="submit" style="outline: none; box-shadow: none;"><i class="fa-solid fa-folder-plus"></i></button>
+  <div class="d-flex justify-content-between">
+    <div class="d-flex justify-content-start">
+      <div>
+        <h3>Hi, <%= current_user.first_name %>&nbsp;&nbsp;<i class="fa-solid fa-hand fa-rotate-by" style="--fa-rotate-angle: 30deg;"></i></h3>
+        <div style="height: 6px;"></div>
+        <p>You have <span style="font-weight: 600;"><%= @bookmarks_count %> videos</span><br>and <span style="font-weight: 600;"><%= @folders.count %> folders</span></p>
+      </div>
+    </div>
+    <div class="d-flex justify-content-end align-items-top">
+      <%= image_tag "https://res.cloudinary.com/dq1ieegre/image/upload/v1708015145/9BF2648B-C177-4CC2-8D5F-1146E51184DF_u0frjn.png", style: "height: 90px; border-radius: 50%;" %>
     </div>
   </div>
-
-  <% end %>
 </div>
 
 <hr>
 
-<div class="container" >
-  <div class="row">
-    <div class="col-12">
-      <div class="input-group">
-        <button class="btn btn-outline-primary btn-block dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="width: 100%;">Select and view a folder</button>
-        <ul class="dropdown-menu" style="width: 100%;">
-          <% @folders.each do |folder| %>
-            <li><a class="dropdown-item" href="/folders/<%= folder.id %>"><%= folder.name %></a></li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div style="height: 12px;"></div>
-
 <div class="container">
   <div>
-    <h4>My folders</h4>
-  </div>
+    <h4>Practice your favorites</h4>
+    <div style="height: 12px;"></div>
 
-  <div style="height: 12px;"></div>
-
-  <div class="folder">
-    <% @folders.each do |folder| %>
-      <div>
-      <%= link_to folder_path(folder) do %>
-      <div class="card bg-light">
-        <div class="card-body">
-          <p style="font-weight: 600;"><%= folder.name %></p>
-          <%= link_to folder_path(folder), data: { turbo_method: :delete } do %>
-            <i class="fa-solid fa-trash fa-lg"></i>
+    <div class="flex">
+      <% @favorites_folder.videos.each do |video| %>
+      <div style="margin-right: 12px;">
+        <div>
+          <%= link_to video_path(video) do %>
+            <%= cl_video_tag video.video.key, class: "rounded item flex-item" %>
           <% end %>
+        </div>
+        <div class="d-flex justify-content-start">
+          <p style="font-weight: 600;"><%= video.name %></p>
         </div>
       </div>
       <% end %>
-      </div>
-    <% end %>
+    </div>
   </div>
 </div>
 
