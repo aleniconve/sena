@@ -2,8 +2,6 @@
 
 <div class="container" style="padding-top: 90px;">
   <div class="w-75">
-    <button type="button" class="btn btn-outline-primary btn-sm" style="color: gray; border-color: lightgray;" disabled><%= @video.category.upcase %></button>
-    <div style="height: 12px;"></div>
     <h3><%= @video.name %></h3>
   </div>
 
@@ -16,10 +14,10 @@
   <div class="d-flex justify-content-between py-2">
     <div class="d-flex justify-content-start">
       <%= simple_form_for [@video, @bookmark] do |f| %>
-        <div class="input-group">
+        <div class="input-group" data-controller="bookmark" data-bookmark-change-status-value="<i class='fa-solid fa-spinner'></i>">
           <%= f.association :folder, collection: @folders, class: "form-control", prompt: "Add to a folder", label: false %>
           <div class="input-group-append">
-            <button class="btn btn-primary" type="submit"><i class="fa-solid fa-bookmark"></i></button>
+            <button class="btn btn-primary" type="submit" data-bookmark-target="button" data-action="click->bookmark#add"><i class="fa-solid fa-bookmark"></i></button>
           </div>
         </div>
       <% end %>
@@ -34,7 +32,7 @@
         <% if @favorite.blank? %>
         <div data-controller="favorite" data-favorite-change-status-value="<i class='fa-solid fa-heart fa-xl'></i>">
           <%= simple_form_for [@video, @bookmark] do |f| %>
-            <input name="bookmark[folder_id]" type="hidden" value="42">
+            <input name="bookmark[folder_id]" type="hidden" value="<%= current_user.folders.find_by(name: "Favorites").id %>">
             <button type="submit" data-favorite-target="heart" data-action="click->favorite#like" style="background: none; border: 0; padding: 0; margin: 0;"><i class="fa-regular fa-heart fa-xl"></i></button>
           <% end %>
         </div>

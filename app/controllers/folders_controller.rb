@@ -1,11 +1,21 @@
 class FoldersController < ApplicationController
 
+  def index
+    if current_user
+      @favorites_folder = current_user.folders.find_by(name: "Favorites")
+      @folders_with_videos = current_user.folders.includes(:videos)
+      @folders = current_user.folders.where.not(name: "Favorites").order(created_at: :desc)
+      @folder = Folder.new
+      @video = Video.new
+    else
+      redirect_to user_session_path
+    end
+  end
+
   def show
     @folder = Folder.find(params[:id])
-    @videos = @folder.videos
+    @bookmarks = @folder.bookmarks.order(created_at: :desc)
     @bookmark = Bookmark.new
-    @fav_id = Folder.where(name: "Favorites").and(Folder.where(user: current_user))
-    @favorite = Bookmark.where(video: @video).and(Bookmark.where(folder_id: @fav_id))
     # @bookmark = Bookmark.find(params[:id])
     # @video = Video.find(params[:id])
     # display all bookmarks from this folder
@@ -16,9 +26,7 @@ class FoldersController < ApplicationController
     @folder.name
     @folder.user = current_user
     if @folder.save
-      redirect_to profile_path #notice: "#{@folder.name} was successfully created!"
-    else
-      render "pages/profile"
+      redirect_to folders_path #notice: "#{@folder.name} was successfully created!"
     end
   end
 
