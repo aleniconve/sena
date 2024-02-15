@@ -14,7 +14,7 @@ class PagesController < ApplicationController
     if current_user
       @favorites_folder = current_user.folders.find_by(name: "Favorites")
       @folders_with_videos = current_user.folders.includes(:videos)
-      @folders = current_user.folders.where.not(name: "Favorites")
+      @folders = current_user.folders.where.not(name: "Favorites").order(created_at: :desc)
       @folder = Folder.new
       @video = Video.new
     else

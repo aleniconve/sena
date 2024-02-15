@@ -8,21 +8,21 @@
     <p><i><%= @videos.count %> <% if @videos.count > 1 %>videos<% else %>video<% end %> found</i></p>
   </div>
 
-  <div style="height: 12px;"></div>
+  <div style="height: 24px;"></div>
 
   <div class="video">
-  <% @videos.each do |video| %>
-    <div>
+    <% @videos.each do |video| %>
       <div>
-      <%= link_to video_path(video) do %>
-        <%= cl_video_tag video.video.key, class: "card-img-top rounded" %>
-      <% end %>
+        <div>
+        <%= link_to video_path(video) do %>
+          <%= cl_video_tag video.video.key, class: "card-img-top rounded" %>
+        <% end %>
+        </div>
+        <div class="d-flex justify-content-start">
+          <p style="font-size: 14px; font-weight: 600;"><%= video.name %></p>
+        </div>
       </div>
-      <div class="d-flex justify-content-start">
-        <p style="font-size: 14px; font-weight: 600;"><%= video.name %></p>
-      </div>
-    </div>
-  <% end %>
+    <% end %>
   </div>
 </div>
 
@@ -46,12 +46,10 @@
     <div class="flex">
       <% @popular_videos.each do |video| %>
       <div style="margin-right: 12px;">
-        <div class="relative">
+        <div>
           <%= link_to video_path(video) do %>
             <%= cl_video_tag video.video.key, class: "rounded item flex-item" %>
           <% end %>
-          <div class="absolute">
-          </div>
         </div>
         <div class="d-flex justify-content-start">
           <p style="font-weight: 600;"><%= video.name %></p>

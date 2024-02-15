@@ -12,15 +12,15 @@
         controller: "alert",
         alert_icon_value: "success",
         alert_title_value: "Folder created successfully",
-        alert_confirm_button_text_value: "OK!",
+        alert_confirm_button_text_value: "OK",
         action: "submit->alert#initSweetalert",
         turbo: false
       } } do |f| %>
 
   <div class="input-group">
-    <%= f.text_field :name, class: "form-control", placeholder: "Add a new folder", :autocomplete => :off %>
+    <%= f.text_field :name, class: "form-control", placeholder: "Add a new folder", style: "outline: none; box-shadow: none;", :autocomplete => :off %>
     <div class="input-group-append">
-      <button class="btn btn-primary" type="submit"><i class="fa-solid fa-folder-plus"></i></button>
+      <button class="btn btn-primary" type="submit" style="outline: none; box-shadow: none;"><i class="fa-solid fa-folder-plus"></i></button>
     </div>
   </div>
 
@@ -32,33 +32,42 @@
 <div class="container" >
   <div class="row">
     <div class="col-12">
-      <div class="d-flex justify-content-end input-group">
-        <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="width: 100%;">My Folders</button>
-        <ul class="dropdown-menu dropdown-menu-end" style="width: 100%git a">
+      <div class="input-group">
+        <button class="btn btn-outline-primary btn-block dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="width: 100%;">Select and view a folder</button>
+        <ul class="dropdown-menu" style="width: 100%;">
           <% @folders.each do |folder| %>
-            <li><%= link_to folder.name, folder_path(folder) %></li>
+            <li><a class="dropdown-item" href="/folders/<%= folder.id %>"><%= folder.name %></a></li>
           <% end %>
         </ul>
       </div>
     </div>
-    <div style="height: 12px;"></div>
+  </div>
+</div>
 
-    <div class="folder-container">
-      <div class="folder">
-        <% @folders.each do |folder| %>
-          <%= link_to folder_path(folder) do %>
-          <div class="card d-flex justify-content-between align-items-center bg-light" style="border-color: #DDDDDD;">
-            <div class="card-body">
-              <%= link_to folder.name, folder_path(folder) %>
-              <%= link_to folder_path(folder), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
-                <i class="fa-solid fa-trash fa-lg"></i>
-              <% end %>
-            </div>
-          </div>
+<div style="height: 12px;"></div>
+
+<div class="container">
+  <div>
+    <h4>My folders</h4>
+  </div>
+
+  <div style="height: 12px;"></div>
+
+  <div class="folder">
+    <% @folders.each do |folder| %>
+      <div>
+      <%= link_to folder_path(folder) do %>
+      <div class="card bg-light">
+        <div class="card-body">
+          <p style="font-weight: 600;"><%= folder.name %></p>
+          <%= link_to folder_path(folder), data: { turbo_method: :delete } do %>
+            <i class="fa-solid fa-trash fa-lg"></i>
           <% end %>
-        <% end %>
+        </div>
       </div>
-    </div>
+      <% end %>
+      </div>
+    <% end %>
   </div>
 </div>
 

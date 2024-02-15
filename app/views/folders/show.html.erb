@@ -7,8 +7,8 @@
 
   <div style="height: 18px;"></div>
 
-  <h3><%= @folder.name.capitalize %></h3>
-  <p><i><%= @folder.bookmarks.count %> videos</i></p>
+  <h3><%= @folder.name %></h3>
+  <p><i><%= @folder.bookmarks.count %> <% if @folder.bookmarks.count == 1 %>video<% else %>videos<% end %></i></p>
 </div>
 
 
@@ -37,7 +37,7 @@
         </div>
         <div style="width: 12px;"></div>
         <div>
-          <%= link_to bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+          <%= link_to bookmark_path(bookmark), data: { turbo_method: :delete } do %>
             <i class="fa-solid fa-trash fa-xl"></i>
           <% end %>
         </div>
@@ -46,7 +46,5 @@
   </div>
 
 <% end %>
-
-<div style="height: 24px;"></div>
 
 <%= render "shared/footer" %>

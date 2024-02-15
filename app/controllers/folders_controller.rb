@@ -13,7 +13,7 @@ class FoldersController < ApplicationController
 
   def create
     @folder = Folder.new(folder_params)
-    @folder.name.capitalize!
+    @folder.name
     @folder.user = current_user
     if @folder.save
       redirect_to profile_path #notice: "#{@folder.name} was successfully created!"
