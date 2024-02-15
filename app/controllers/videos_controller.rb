@@ -37,7 +37,7 @@ class VideosController < ApplicationController
                    .or(Video.where("lower(category) like ?", "%#{@keyword.downcase}%"))
       end
       if @results.blank?
-        @popular_videos = Video.all.sample(8)
+        @popular_videos = Video.all.sample(4)
       else
         @videos = @results
       end

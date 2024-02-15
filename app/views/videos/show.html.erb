@@ -1,47 +1,54 @@
 <%= render "shared/navbar" %>
 
 <div class="container" style="padding-top: 90px;">
-  <div>
+  <div class="w-75">
+    <button type="button" class="btn btn-outline-primary text-primary btn-sm" style="border-color: lightslategray;" disabled><%= @video.category.upcase %></button>
+    <div style="height: 12px;"></div>
     <h3><%= @video.name %></h3>
   </div>
-</div>
 
-<hr style="border-color: light-gray;">
-<div style="height: 12px;"></div>
-
-<div class="container">
+  <div style="height: 12px;"></div>
 
   <div>
     <%= cl_video_tag @video.video.key, controls: true, class: "card-img-top rounded" %>
   </div>
 
-  <div class="d-flex justify-content-end p-2">
-    <div data-controller="share" data-share-feedback-text-value="<p style='font-weight: 600;'>Copied&nbsp;&nbsp;<i class='fa-solid fa-check fa-xl'></i></p>">
-      <input type="hidden" data-share-target="url" value="<%= cl_video_path @video.video.key %>">
-      <div data-share-target="button" data-action="click->share#copy"><i class="fa-regular fa-copy fa-xl"></i></div>
-    </div>
-    <div style="width: 12px;"></div>
-    <div>
-      <% if @favorite.blank? %>
-      <div data-controller="favorite" data-favorite-change-status-value="<i class='fa-solid fa-heart fa-xl'></i>">
-        <%= simple_form_for [@video, @bookmark] do |f| %>
-          <input name="bookmark[folder_id]" type="hidden" value="42">
-          <button type="submit" data-favorite-target="heart" data-action="click->favorite#like" style="background: none; border: 0; padding: 0; margin: 0;"><i class="fa-regular fa-heart fa-xl"></i></button>
-        <% end %>
-      </div>
-      <% else %>
-      <div>
-        <i class="fa-solid fa-heart fa-xl"></i>
-      </div>
+  <div class="d-flex justify-content-between py-2">
+    <div class="d-flex justify-content-start">
+      <%= simple_form_for [@video, @bookmark] do |f| %>
+        <div class="input-group">
+          <%= f.association :folder, collection: Folder.where(user: current_user).order(:name), class: "form-control", prompt: "Add to a folder", label: false %>
+          <div class="input-group-append">
+            <button class="btn btn-primary" type="submit"><i class="fa-solid fa-bookmark"></i></button>
+          </div>
+        </div>
       <% end %>
     </div>
-
+    <div class="d-flex justify-content-end p-2">
+      <div data-controller="share" data-share-feedback-text-value="<p style='font-weight: 600; padding: 0; margin: 0;'>Copied</p>">
+        <input type="hidden" data-share-target="url" value="<%= cl_video_path @video.video.key %>">
+        <div data-share-target="button" data-action="click->share#copy"><i class="fa-regular fa-copy fa-xl"></i></div>
+      </div>
+      <div style="width: 12px;"></div>
+      <div>
+        <% if @favorite.blank? %>
+        <div data-controller="favorite" data-favorite-change-status-value="<i class='fa-solid fa-heart fa-xl'></i>">
+          <%= simple_form_for [@video, @bookmark] do |f| %>
+            <input name="bookmark[folder_id]" type="hidden" value="42">
+            <button type="submit" data-favorite-target="heart" data-action="click->favorite#like" style="background: none; border: 0; padding: 0; margin: 0;"><i class="fa-regular fa-heart fa-xl"></i></button>
+          <% end %>
+        </div>
+        <% else %>
+        <div>
+          <i class="fa-solid fa-heart fa-xl"></i>
+        </div>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
 
-<%# <div style="height: 18px;"></div> %>
-<hr style="border-color: light-gray;">
-<%# <div style="height: 18px;"></div> %>
+<hr>
 
 <div class="container">
   <div>

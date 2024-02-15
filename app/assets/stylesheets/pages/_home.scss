@@ -10,6 +10,11 @@
   color: white;
 }
 
+p {
+  padding: 0;
+  margin: 0;
+}
+
 h2 {
   font-size: xx-large;
   line-height: 1.75;
@@ -27,7 +32,7 @@ h3, h4 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 12px;
-  // row-gap: 6px;
+  row-gap: 12px;
 }
 
 .category {
@@ -56,6 +61,5 @@ h3, h4 {
 
 hr {
   padding: 0;
-  margin: 0;
-  border-color: #E4E4E4;
+  border-color: lightslategray;
 }

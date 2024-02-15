@@ -1,49 +1,11 @@
 <%= render "shared/navbar" %>
 
 <div class="container" style="padding-top: 90px;">
-  <div class="m-1">
-
-    <h4><strong><%= current_user.first_name %>'s Library</strong></h4>
-    <div style="height: 12px;"></div>
-<div class="flex">
-  <div class="row">
-    <div style="margin-right: 12px;">
-      <div class="flex">
-        <h6><%= link_to @favorites_folder.name, folder_path(@favorites_folder) %></h6>
-      </div>
-      <div class="flex">
-        <% @favorites_folder.videos.each do |video| %>
-          <div style="margin-right: 12px;">
-            <%= cl_video_tag video.video.key, class: "rounded item flex-item", controls: true %>
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="d-flex justify-content-start align-items-center">
-                <p style="font-weight: 600;"><%= video.name %></p>
-              </div>
-              <div class="d-flex justify-content-end align-items-center">
-                <%# Add any additional actions/buttons here %>
-              </div>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    </div>
-
+  <div>
+    <h3><%= current_user.first_name %>'s Library</h3>
   </div>
-</div>
 
-<div class="row">
-  <div class="col-12">
-    <div class="d-flex justify-content-end input-group">
-      <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="width: 100%;">My Folders</button>
-      <ul class="dropdown-menu dropdown-menu-end" style="width: 100%;">
-        <% @folders.each do |folder| %>
-          <li><%= link_to folder.name, folder_path(folder) %></li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
-  <div style="height: 12px;"></div>
-  <p><i><%= @folders.count %> folders</i></p>
+  <div style="height: 24px;"></div>
 
   <%= simple_form_for @folder, html: {
       data: {
@@ -54,21 +16,28 @@
         action: "submit->alert#initSweetalert",
         turbo: false
       } } do |f| %>
-  <div class="input-group">
-    <%# <div class="input-group-prepend"> %>
-      <%# <label class="input-group-text">Add</label> %>
-    <%# </div> %>
-    <%= f.text_field :name, class: "form-control", placeholder: "Add new folder", :autocomplete => :off%>
 
+  <div class="input-group">
+    <%= f.text_field :name, class: "form-control", placeholder: "Add a new folder", :autocomplete => :off %>
     <div class="input-group-append">
       <button class="btn btn-primary" type="submit"><i class="fa-solid fa-folder-plus"></i></button>
     </div>
   </div>
-  <% end %>
-  <div style="height: 12px;"></div>
-  <div style="height: 12px;"></div>
-  <div style="height: 12px;"></div>
 
+  <% end %>
+</div>
+
+<hr>
+
+<div class="container">
+  <div class="d-flex justify-content-end">
+    <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Select a folder</button>
+    <ul class="dropdown-menu">
+      <% @folders.each do |folder| %>
+        <li><a class="dropdown-item" href="/folders/<%= folder.id %>"><%= folder.name.capitalize %></a></li>
+      <% end %>
+    </ul>
+  </div>
 </div>
 
 <%= render "shared/footer" %>
