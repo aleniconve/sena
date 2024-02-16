@@ -40,16 +40,3 @@ a {
   justify-content: space-between;
   text-wrap: balance;
 }
-
-.custom-file-button {
-	input[type="file"] {
-		margin-left: -2px !important;
-
-		&::-webkit-file-upload-button {
-			display: none;
-		}
-		&::file-selector-button {
-			display: none;
-		}
-  }
-}

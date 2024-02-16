@@ -15,7 +15,7 @@
     <div class="d-flex justify-content-start">
       <%= simple_form_for [@video, @bookmark] do |f| %>
         <div class="input-group" data-controller="bookmark" data-bookmark-change-status-value="<i class='fa-solid fa-spinner'></i>">
-          <%= f.association :folder, collection: @folders, class: "form-control", prompt: "Add to a folder", label: false %>
+          <%= f.association :folder, collection: @folders, class: "form-control", prompt: "Add to a folder", label: false, input_html: { style: "outline: none; box-shadow: none;" } %>
           <div class="input-group-append">
             <button class="btn btn-primary" type="submit" data-bookmark-target="button" data-action="click->bookmark#add"><i class="fa-solid fa-bookmark"></i></button>
           </div>
