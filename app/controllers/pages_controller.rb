@@ -1,13 +1,12 @@
 class PagesController < ApplicationController
   def home
     @bookmark = Bookmark.new
-    if current_user
-      @videos = Video.all.sample(4)
-    else
-      @videos = Video.all.sample(4)
-    end
+    @videos = Video.all.sample(4)
     @most_searched_videos = Video.where("search_count > 0").order(search_count: :desc).limit(4)
     @most_searched_videos ||= []
+    if current_user && current_user.folders.find_by(name: "Favorites").blank?
+      Folder.create(name: "Favorites", user_id: current_user.id)
+    end
   end
 
   def profile

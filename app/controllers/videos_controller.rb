@@ -1,8 +1,12 @@
 class VideosController < ApplicationController
 
   def new
-    @video = Video.new
-    @folders = current_user.folders.where.not(name: "Favorites").order(:name)
+    if current_user
+      @video = Video.new
+      @folders = current_user.folders.where.not(name: "Favorites").order(:name)
+    else
+      redirect_to user_session_path
+    end
   end
 
   def create
@@ -23,9 +27,11 @@ class VideosController < ApplicationController
     @video.increment!(:search_count)
     @related_videos = Video.where(category: @video.category).sample(4)
 
-    @fav_id = Folder.where(name: "Favorites").and(Folder.where(user: current_user))
-    @favorite = Bookmark.where(video: @video).and(Bookmark.where(folder_id: @fav_id))
-    @folders = current_user.folders.where.not(name: "Favorites").order(:name)
+    if current_user
+      @fav_id = current_user.folders.find_by(name: "Favorites").id
+      @favorite = Bookmark.where(video: @video).and(Bookmark.where(folder_id: @fav_id))
+      @folders = current_user.folders.where.not(name: "Favorites").order(:name)
+    end
   end
 
   def index
