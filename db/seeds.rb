@@ -75,7 +75,7 @@ new.video.attach(io: file, filename: video, content_type: "video/mp4")
 new.save!
 
 video = "v1707736720/Brother_and_Sister_gtll3s.mp4"
-new = Video.new(name: "Brother and Sister", category: "family", user_id: 1, description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.")
+new = Video.new(name: "Brother and sister", category: "family", user_id: 1, description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.")
 file = URI.open("https://res.cloudinary.com/dq1ieegre/video/upload/#{video}")
 new.video.attach(io: file, filename: video, content_type: "video/mp4")
 new.save!
@@ -193,7 +193,7 @@ new.video.attach(io: file, filename: video, content_type: "video/mp4")
 new.save!
 
 video = "v1707736723/Good_Morning_las3fb.mp4"
-new = Video.new(name: "Good Morning and Good Night", category: "time", user_id: 1, description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.")
+new = Video.new(name: "Good morning and good night", category: "time", user_id: 1, description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.")
 file = URI.open("https://res.cloudinary.com/dq1ieegre/video/upload/#{video}")
 new.video.attach(io: file, filename: video, content_type: "video/mp4")
 new.save!

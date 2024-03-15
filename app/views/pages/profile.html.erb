@@ -4,13 +4,13 @@
   <div class="d-flex justify-content-between">
     <div class="d-flex justify-content-start">
       <div>
-        <h3>Hi, <%= current_user.first_name %>&nbsp;&nbsp;<i class="fa-solid fa-hand fa-rotate-by" style="--fa-rotate-angle: 30deg;"></i></h3>
+        <h3>Hi there&nbsp;&nbsp;<i class="fa-solid fa-hand fa-rotate-by" style="--fa-rotate-angle: 30deg;"></i></h3>
         <div style="height: 6px;"></div>
-        <p>You have <span style="font-weight: 600;"><%= @bookmarks_count %> videos</span><br>and <span style="font-weight: 600;"><%= @folders.count %> folders</span></p>
+        <p>You have <span style="font-weight: 600;"><%= @bookmarks_count %> <% if @bookmarks_count == 1 %>video<% else %>videos<% end %></span><br> and <span style="font-weight: 600;"><%= @folders.count %> <% if @folders.count == 1 %>folder<% else %>folders<% end %></span></p>
       </div>
     </div>
     <div class="d-flex justify-content-end align-items-top">
-      <%= image_tag "https://res.cloudinary.com/dq1ieegre/image/upload/v1708015145/9BF2648B-C177-4CC2-8D5F-1146E51184DF_u0frjn.png", style: "height: 90px; border-radius: 50%;" %>
+      <%# image_tag "https://media.licdn.com/dms/image/D4E03AQH6RopTGQesqQ/profile-displayphoto-shrink_200_200/0/1708513050927?e=1714003200&v=beta&t=VmtQCjjyw3JAgl0NE0JxZ9vOLyITFRriJgtAtd2N5IE", style: "height: 90px; border-radius: 50%;" %>
     </div>
   </div>
 </div>
